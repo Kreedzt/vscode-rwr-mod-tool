@@ -16,6 +16,14 @@
       {
         "command": "vscode-rwr-mod-tool.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "vscode-rwr-mod-tool.createArmor",
+        "title": "Create Armor"
+      },
+      {
+        "command": "vscode-rwr-mod-tool.createWeapon",
+        "title": "Create Weapon"
       }
     ]
   },
