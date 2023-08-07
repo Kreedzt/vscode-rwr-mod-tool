@@ -18,6 +18,6 @@ export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
 		});
 
 		vscode.window.showInformationMessage(`Get input: ${inputVal}!`);
-		vscode.window.showInformationMessage(`Get workspace folders: ${vscode.workspace.workspaceFolders?.[0]?.uri}`);
+		vscode.window.showInformationMessage(`Get workspace folders: ${vscode.workspace.workspaceFolders?.[0]?.uri.fsPath}`);
 	}));
 }
