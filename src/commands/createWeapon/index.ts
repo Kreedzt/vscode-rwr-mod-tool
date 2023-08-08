@@ -27,5 +27,9 @@ export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
 		res.forEach(target => {
 			console.log(target);
 		});
+
+		// TODO: replace by all_weapons.xml read ref
+		const select = await vscode.window.showQuickPick(['aaa', 'bbb', 'ccc']);
+		console.log('user select', select);
 	}));
 }
