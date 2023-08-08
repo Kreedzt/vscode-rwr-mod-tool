@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { findFileRecursively } from '../../utils/findFile';
 
 export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
     context.subscriptions.push(vscode.commands.registerCommand('vscode-rwr-mod-tool.createWeapon', async () => {
@@ -18,6 +19,13 @@ export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
 		});
 
 		vscode.window.showInformationMessage(`Get input: ${inputVal}!`);
+
 		vscode.window.showInformationMessage(`Get workspace folders: ${vscode.workspace.workspaceFolders?.[0]?.uri.fsPath}`);
+
+		const res = await findFileRecursively('all_weapons.xml');
+
+		res.forEach(target => {
+			console.log(target);
+		});
 	}));
 }
