@@ -1,5 +1,7 @@
 import * as vscode from 'vscode';
 import { findFileRecursively } from '../../utils/findFile';
+import { parseXML } from '../../utils/parse';
+import { IAllWeaponsXML } from './types';
 
 export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
     context.subscriptions.push(vscode.commands.registerCommand('vscode-rwr-mod-tool.createWeapon', async () => {
@@ -28,8 +30,24 @@ export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
 			console.log(target);
 		});
 
+        const filePath = vscode.Uri.joinPath(res[0][0], 'all_weapons.xml');
+
+        console.log('file path', filePath);
+
+		const fileContent = (await vscode.workspace.fs.readFile(filePath)).toString();
+
+        console.log('file content', fileContent);
+		const xml = parseXML(fileContent) as IAllWeaponsXML;
+		console.log(xml);
+
+        const weaponNames: string[] = [];
+
+        xml.weapons.weapon.forEach(weapon => {
+            weaponNames.push(weapon['@_file']);
+        });
+
 		// TODO: replace by all_weapons.xml read ref
-		const select = await vscode.window.showQuickPick(['aaa', 'bbb', 'ccc']);
+		const select = await vscode.window.showQuickPick(weaponNames);
 		console.log('user select', select);
 	}));
 }

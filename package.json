@@ -15,11 +15,11 @@
     "commands": [
       {
         "command": "vscode-rwr-mod-tool.createArmor",
-        "title": "Create Armor"
+        "title": "RWR Mod Tool: Create Armor"
       },
       {
         "command": "vscode-rwr-mod-tool.createWeapon",
-        "title": "Create Weapon"
+        "title": "RWR Mod Tool: Create Weapon"
       }
     ]
   },
