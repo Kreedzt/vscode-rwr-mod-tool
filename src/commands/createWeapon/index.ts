@@ -4,6 +4,7 @@ import { parseXML } from '../../utils/parse';
 import { IAllWeaponsRegisterXML, IWeaponRegisterXML } from './types';
 import { buildXML } from '../../utils/build';
 import { TemplateService } from './template';
+import { getAllWeaponsUri } from './utils';
 
 
 const showNameInput = async () => {
@@ -27,21 +28,14 @@ const showNameInput = async () => {
 }
 
 const getAllWeaponsRegistryNames = async (): Promise<string[]> => {
-	const res = await findFileRecursively('all_weapons.xml');
-
-	res.forEach(target => {
-		console.log(target);
-	});
-
-	const filePath = vscode.Uri.joinPath(res[0][0], 'all_weapons.xml');
-
-	console.log('file path', filePath);
+	const filePath = await getAllWeaponsUri();
+	if (!filePath) {
+		return [];
+	}
 
 	const fileContent = (await vscode.workspace.fs.readFile(filePath)).toString();
 
-	console.log('file content', fileContent);
 	const xml = parseXML(fileContent) as IAllWeaponsRegisterXML;
-	console.log(xml);
 
 	// Parse all_weapons.xml data
 	const weaponNames: string[] = [];
@@ -53,21 +47,24 @@ const getAllWeaponsRegistryNames = async (): Promise<string[]> => {
 	return weaponNames;
 }
 
-const updateWeaponRegistry = async (inputWeaponName: string,weaponNames: string[]) => {
+const updateWeaponRegistry = async (inputWeaponName: string, weaponNames: string[]): Promise<boolean> => {
 	// Select all_weapons.xml data
 	const select = await vscode.window.showQuickPick(weaponNames);
 	console.log('user select', select);
 
 	if (!select) {
-		return;
+		return false;
 	}
 
-	const userSelectFile = await findFileRecursively(select);
-	if (!userSelectFile[0]) {
-		return;
+	// TODO: not in weapons as error
+	// const uris = await vscode.workspace.findFiles(`**/weapons/${select}`);
+	const uris = await vscode.workspace.findFiles(`**/${select}`);
+	console.log('updateWeaponRegistry: uris', uris);
+	const groupFileName = uris[0];
+	if (!groupFileName) {
+		return false;
 	}
 
-	const groupFileName = vscode.Uri.joinPath(userSelectFile[0][0], userSelectFile[0][1]);
 
 	const groupFileContent = (await vscode.workspace.fs.readFile(groupFileName)).toString();
 	const groupFileXml = parseXML(groupFileContent) as IAllWeaponsRegisterXML;
@@ -81,17 +78,17 @@ const updateWeaponRegistry = async (inputWeaponName: string,weaponNames: string[
 	console.log(newGroupFileXmlContent);
 
 	await vscode.workspace.fs.writeFile(groupFileName, Buffer.from(newGroupFileXmlContent));
+	return true;
 }
 
 const createWeaponFile = async (weaponName: string) => {
-	const folderList = await findFolderRecursively('weapons');
-	console.log('folderList', folderList);
-
-	if (!folderList[0]) {
+	const targetUri = await getAllWeaponsUri();
+	if (!targetUri) {
 		return;
 	}
 
-	const writePath = vscode.Uri.joinPath(folderList[0], `${weaponName}.weapon`);
+	const writePath = vscode.Uri.joinPath(vscode.Uri.joinPath(targetUri, '../'), `${weaponName}.weapon`);
+	console.log('createWeaponFile:writePath', writePath);
 	
 	const xmlContent = TemplateService.getCls().getXMLContent({ weaponName });
 
@@ -114,7 +111,9 @@ export const registerWeaponCommand = (context: vscode.ExtensionContext) => {
 			return;
 		}
 		const weaponNames = await getAllWeaponsRegistryNames();
-		await updateWeaponRegistry(inputWeaponName, weaponNames);
+		if (!await updateWeaponRegistry(inputWeaponName, weaponNames)) {
+			return;
+		}
 		await createWeaponFile(inputWeaponName);
 	}));
 }
