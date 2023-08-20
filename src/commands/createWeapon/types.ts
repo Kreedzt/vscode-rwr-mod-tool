@@ -1,9 +1,15 @@
-export interface IWeaponXML {
+export interface IWeaponRegisterXML {
     '@_file': string;
 }
 
-export interface IAllWeaponsXML {
+export interface IAllWeaponsRegisterXML {
     weapons: {
-        weapon: IWeaponXML[];
+        weapon: IWeaponRegisterXML[];
+    }
+}
+
+export interface IWeaponXML {
+    weapon: {
+        '@_key': string;
     }
 }

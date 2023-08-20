@@ -6,7 +6,13 @@ export const parseXML = (content: string) => {
         parseAttributeValue: true,
         ignoreAttributes: false,
         allowBooleanAttributes: true,
-        commentPropName: 'comment'
+        parseTagValue: true,
+        commentPropName: 'comment',
+        numberParseOptions: {
+            hex: true,
+            leadingZeros: false,
+            eNotation: true
+        },
     });
 
     return parser.parse(content);
