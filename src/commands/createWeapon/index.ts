@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import { findFileRecursively, findFolderRecursively } from '../../utils/find';
 import { parseXML } from '../../utils/parse';
 import { IAllWeaponsRegisterXML, IWeaponRegisterXML } from './types';
 import { buildXML } from '../../utils/build';
