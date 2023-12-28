@@ -1,5 +1,6 @@
 
 import { XMLParser } from "fast-xml-parser";
+import * as vscode from 'vscode';
 
 export const parseXML = (content: string) => {
     const parser = new XMLParser({
