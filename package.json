@@ -9,7 +9,12 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "workspaceContains:**/calls/all_calls.xml",
+    "workspaceContains:**/factions/all_factions.xml",
+    "workspaceContains:**/items/all_carry_items.xml",
+    "workspaceContains:**/weapons/all_weapons.xml"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
