@@ -22,6 +22,10 @@ export const registerTaskList = async (context: vscode.ExtensionContext) => {
         vscode.workspace.onDidChangeWorkspaceFolders(e => {
             console.log('onDidChangeWorkspaceFolders: startXmlCheck');
             startXmlCheck();
+        }),
+        vscode.workspace.onDidRenameFiles(e => {
+            console.log('onDidRenameFiles: startXmlCheck');
+            startXmlCheck();
         })
     )
 }

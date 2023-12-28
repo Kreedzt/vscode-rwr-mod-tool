@@ -79,7 +79,7 @@ const checkRefFileExists = async (e: vscode.Uri, fileContent: string, struct: an
         character: number;
         file: string;
     }> = [];
-    checkRes.properties.forEach(property => {
+    checkRes.properties.filter(p => !p.result).forEach(property => {
         const pos = getAllPosition(fileContent, property.file);
 
         pos.forEach(p => {
