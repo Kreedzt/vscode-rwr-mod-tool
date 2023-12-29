@@ -1,0 +1,160 @@
+{
+    "<weapon>": {
+        "prefix": "<weapon>",
+        "description": "full weapon data xml",
+        "body": [
+            "<weapon file=\"$1\" key=\"$2\">$3</weapon>",
+            "$4"
+        ]
+    },
+    "<specification>": {
+        "prefix": "<specification>",
+        "description": "weapon specification",
+        "body": [
+            "<specification",
+            "retrigger_time=\"$1\"",
+            "accuracy_factor=\"$2\"",
+            "sustained_fire_grow_step=\"$3\"",
+            "sustained_fire_diminish_rate=\"$4\"",
+            "magazine_size=\"$5\"",
+            "can_shoot_standing=\"$6\"",
+            "carry_in_two_hands=\"$7\"",
+            "suppressed=\"$8\"",
+            "name=\"$9\"",
+            "class=\"${10|0|}\"",
+            "reload_one_at_a_time=\"${11|0|}\"",
+            "sight_range_modifier=\"${12|1.0|}\"",
+            "projectile_speed=\"$13\"",
+            "projectiles_per_shot=\"$14\"",
+            "barrel_offset=\"$15\"",
+            "burst_shots=\"$16\"",
+            "stab_enabled=\"$17\"",
+            "use_basic_muzzle_smoke_effect=\"${18|0|}\"",
+            "slot=\"${19|0|}\">",
+            "$20",
+            "</specification>",
+            "$21"
+        ]
+    },
+    "<drop_on_death_result>": {
+        "prefix": "<drop_on_death_result>",
+        "description": "drop_on_death_result",
+        "body": [
+            "<drop_on_death_result",
+            "class=\"${1|spawn|}\"",
+            "instance_class=\"${2|projectile|}\"",
+            "instance_key=\"$3\"",
+            "min_amount=\"${4|1|}\"",
+            "max_amount=\"${5|1|}\"",
+            "offset=\"${6|0 0 0|}\"",
+            "position_spread=\"${7|0 0|}\"",
+            "direction_spread=\"${8|0 0|}\">",
+            "$9",
+            "</drop_on_death_result>",
+            "$10"
+        ]
+    },
+    "<animation>": {
+        "prefix": "<animation>",
+        "description": "animation",
+        "body": [
+            "<animation state_key=\"$1\" animation_key=\"$2\"/>",
+            "$3"
+        ]
+    },
+    "<sound>": {
+        "prefix": "<sound>",
+        "description": "sound",
+        "body": [
+            "<sound key=\"$1\" fileref=\"$2\" volume=\"$3\" pitch_variety=\"$4\" />",
+            "$5"
+        ]
+    },
+    "<model>": {
+        "prefix": "<model>",
+        "description": "model",
+        "body": [
+            "<model filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "<hud_icon>": {
+        "prefix": "<hud_icon>",
+        "description": "hud_icon",
+        "body": [
+            "<hud_icon filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "<projectile>": {
+        "prefix": "<projectile>",
+        "description": "projectile",
+        "body": [
+            "<projectile",
+            "file=\"$1\"",
+            "pulldown_in_air=\"$2\"",
+            "can_be_detected_by_footmen=\"${3|1|}\"",
+            "time_to_live=\"$4\"",
+            "can_be_detected_by_driver=\"${5|1|}\"",
+            "can_be_disarmed=\"$6\"",
+            "name=\"$7\">",
+            "$8",
+            "</projectile>",
+            "$9"
+        ]
+    },
+    "<result>": {
+        "prefix": "<result>",
+        "description": "result",
+        "body": [
+            "<result",
+            "class=\"$1\"",
+            "kill_probability=\"$2\"",
+            "kill_probability_offset_on_successful_hit=\"$3\"",
+            "kill_decay_start_time=\"$4\"",
+            "kill_decay_end_time=\"$5\"",
+            "character_state=\"$6\" />",
+            "$7"
+        ]
+    },
+    "<trigger>": {
+        "prefix": "<trigger>",
+        "description": "trigger",
+        "body": [
+            "<trigger class=\"$1\" time_to_live=\"$2\" />",
+            "$3"
+        ]
+    },
+    "<rotation>": {
+        "prefix": "<rotation>",
+        "description": "rotation",
+        "body": [
+            "<rotation class=\"$1\" />",
+            "$2"
+        ]
+    },
+    "<effect>": {
+        "prefix": "<effect>",
+        "description": "effect",
+        "body": [
+            "<effect class=\"$1\" key=\"$2\" ref=\"$3\" lighting=\"${4|0|}\" />",
+            "$5"
+        ]
+    },
+    "<trail>": {
+        "prefix": "<trail>",
+        "description": "trail",
+        "body": [
+            "<trail probability=\"${1|1|}\" key=\"$2\" />",
+            "$3"
+        ]
+    },
+    "<modifier>": {
+        "prefix": "<modifier>",
+        "description": "modifier",
+        "body": [
+            "<modifier class=\"$1\" value=\"$2\" />",
+            "$3"
+        ]
+    }
+}

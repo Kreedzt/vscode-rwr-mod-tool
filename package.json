@@ -40,6 +40,12 @@
         "command": "vscode-rwr-mod-tool.createWeapon",
         "title": "RWR Mod Tool: Create Weapon"
       }
+    ],
+    "snippets": [
+      {
+        "language": "xml",
+        "path": "./snippets/xml.json"
+      }
     ]
   },
   "scripts": {
