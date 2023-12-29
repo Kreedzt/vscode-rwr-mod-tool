@@ -44,7 +44,35 @@
     "snippets": [
       {
         "language": "xml",
-        "path": "./snippets/xml.json"
+        "path": "./snippets/call.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/faction.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/item.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/language.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/map.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/model.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/vehicle.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/weapon.json"
       }
     ]
   },

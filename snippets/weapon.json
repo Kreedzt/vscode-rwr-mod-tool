@@ -1,0 +1,198 @@
+{
+    "weapon.register": {
+        "prefix": "rwr-weapon",
+        "description": "rwr weapon register",
+        "body": [
+            "<weapon file=\"$1\" key=\"$2\">$3</weapon>",
+            "$4"
+        ]
+    },
+    "weapon.refdefine": {
+        "prefix": "rwr-weapon-ref-define",
+        "description": "rwr weapon ref define",
+        "body": [
+            "<weapon",
+            "    file=\"$1\"",
+            "    drop_count_factor_on_player_death=\"$2\"",
+            "    time_to_live_out_in_the_open=\"$3\"",
+            "    player_death_drop_owner_lock_time=\"$4\"",
+            "    key=\"$5\"",
+            "    on_ground_up=\"${6|0 0 1|}\"",
+            "    radius=\"$7\"",
+            ">",
+            "$8",
+            "</weapon>",
+            "$9"
+        ]
+    },
+    "weapon.define": {
+        "prefix": "rwr-weapon-define",
+        "description": "rwr weapon define",
+        "body": [
+            "<weapon",
+            "    drop_count_factor_on_death=\"${1|0|}\"",
+            "    drop_count_factor_on_player_death=\"${2|1.0|}\"",
+            "    time_to_live_out_in_the_open=\"$3\"",
+            "    player_death_drop_owner_lock_time=\"$4\"",
+            "    key=\"$5\"",
+            "    on_ground_up=\"${6|0 0 1|}\"",
+            ">",
+            "$7",
+            "</weapon>",
+            "$8"
+        ]
+    },
+    "weapon.specification": {
+        "prefix": "rwr-specification",
+        "description": "rwr weapon specification",
+        "body": [
+            "<specification",
+            "    retrigger_time=\"$1\"",
+            "    accuracy_factor=\"$2\"",
+            "    sustained_fire_grow_step=\"$3\"",
+            "    sustained_fire_diminish_rate=\"$4\"",
+            "    magazine_size=\"$5\"",
+            "    can_shoot_standing=\"$6\"",
+            "    carry_in_two_hands=\"$7\"",
+            "    suppressed=\"$8\"",
+            "    name=\"$9\"",
+            "    class=\"${10|0|}\"",
+            "    reload_one_at_a_time=\"${11|0|}\"",
+            "    sight_range_modifier=\"${12|1.0|}\"",
+            "    projectile_speed=\"$13\"",
+            "    projectiles_per_shot=\"$14\"",
+            "    barrel_offset=\"$15\"",
+            "    burst_shots=\"$16\"",
+            "    stab_enabled=\"$17\"",
+            "    use_basic_muzzle_smoke_effect=\"${18|0|}\"",
+            "    slot=\"${19|0|}\"",
+            ">",
+            "$20",
+            "</specification>",
+            "$21"
+        ]
+    },
+    "weapon.drop_on_death_result": {
+        "prefix": "rwr-drop_on_death_result",
+        "description": "rwr weapon drop_on_death_result",
+        "body": [
+            "<drop_on_death_result",
+            "    class=\"${1|spawn|}\"",
+            "    instance_class=\"${2|projectile|}\"",
+            "    instance_key=\"$3\"",
+            "    min_amount=\"${4|1|}\"",
+            "    max_amount=\"${5|1|}\"",
+            "    offset=\"${6|0 0 0|}\"",
+            "    position_spread=\"${7|0 0|}\"",
+            "    direction_spread=\"${8|0 0|}\"",
+            ">",
+            "$9",
+            "</drop_on_death_result>",
+            "$10"
+        ]
+    },
+    "weapon.animation": {
+        "prefix": "rwr-animation",
+        "description": "rwr weapon animation",
+        "body": [
+            "<animation state_key=\"$1\" animation_key=\"$2\"/>",
+            "$3"
+        ]
+    },
+    "weapon.sound": {
+        "prefix": "rwr-sound",
+        "description": "rwr weapon sound",
+        "body": [
+            "<sound key=\"$1\" fileref=\"$2\" volume=\"$3\" pitch_variety=\"$4\" />",
+            "$5"
+        ]
+    },
+    "weapon.model": {
+        "prefix": "rwr-model",
+        "description": "rwr weapon model",
+        "body": [
+            "<model filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "weapon.hud_icon": {
+        "prefix": "rwr-hud_icon",
+        "description": "rwr weapon hud_icon",
+        "body": [
+            "<hud_icon filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "weapon.projectile": {
+        "prefix": "rwr-projectile",
+        "description": "rwr weapon projectile",
+        "body": [
+            "<projectile",
+            "    file=\"$1\"",
+            "    pulldown_in_air=\"$2\"",
+            "    can_be_detected_by_footmen=\"${3|1|}\"",
+            "    time_to_live=\"$4\"",
+            "    can_be_detected_by_driver=\"${5|1|}\"",
+            "    can_be_disarmed=\"$6\"",
+            "    name=\"$7\"",
+            ">",
+            "$8",
+            "</projectile>",
+            "$9"
+        ]
+    },
+    "weapon.result": {
+        "prefix": "rwr-result",
+        "description": "rwr weapon result",
+        "body": [
+            "<result",
+            "    class=\"$1\"",
+            "    kill_probability=\"$2\"",
+            "    kill_probability_offset_on_successful_hit=\"$3\"",
+            "    kill_decay_start_time=\"$4\"",
+            "    kill_decay_end_time=\"$5\"",
+            "    character_state=\"$6\" />",
+            "$7"
+        ]
+    },
+    "weapon.trigger": {
+        "prefix": "rwr-trigger",
+        "description": "rwr weapon trigger",
+        "body": [
+            "<trigger class=\"$1\" time_to_live=\"$2\" />",
+            "$3"
+        ]
+    },
+    "weapon.rotation": {
+        "prefix": "rwr-rotation",
+        "description": "rwr weapon rotation",
+        "body": [
+            "<rotation class=\"$1\" />",
+            "$2"
+        ]
+    },
+    "weapon.effect": {
+        "prefix": "rwr-effect",
+        "description": "rwr weapon effect",
+        "body": [
+            "<effect class=\"$1\" key=\"$2\" ref=\"$3\" lighting=\"${4|0|}\" />",
+            "$5"
+        ]
+    },
+    "weapon.trail": {
+        "prefix": "rwr-trail",
+        "description": "rwr weapon trail",
+        "body": [
+            "<trail probability=\"${1|1|}\" key=\"$2\" />",
+            "$3"
+        ]
+    },
+    "weapon.modifier": {
+        "prefix": "rwr-modifier",
+        "description": "rwr weapon modifier",
+        "body": [
+            "<modifier class=\"$1\" value=\"$2\" />",
+            "$3"
+        ]
+    }
+}
