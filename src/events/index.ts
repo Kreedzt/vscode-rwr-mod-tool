@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import { startXmlCheck } from './checkXml';
 
-export const registerTaskList = async (context: vscode.ExtensionContext) => {
-    console.log('registerTaskList...');
+export const registerEventList = async (context: vscode.ExtensionContext) => {
+    console.log('registerEventList...');
 
     startXmlCheck();
     

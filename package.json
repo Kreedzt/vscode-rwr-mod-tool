@@ -1,13 +1,24 @@
 {
   "name": "vscode-rwr-mod-tool",
-  "displayName": "rwr-mod-tool",
+  "displayName": "RWR Mod Tool",
   "description": "Running with Rifles game mod tool",
   "version": "0.0.1",
+  "publisher": "Kreedzt",
+  "pricing": "Free",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.80.0"
   },
   "categories": [
+    "Snippets",
+    "Linters",
     "Other"
+  ],
+  "keywords": [
+    "Running with Rifles",
+    "rwr",
+    "mod",
+    "AngelScript"
   ],
   "activationEvents": [
     "workspaceContains:**/calls/all_calls.xml",
@@ -16,6 +27,9 @@
     "workspaceContains:**/weapons/all_weapons.xml"
   ],
   "main": "./out/extension.js",
+  "repository": {
+    "url": "https://github.com/Kreedzt/vscode-rwr-mod-tool"
+  },
   "contributes": {
     "commands": [
       {
@@ -29,7 +43,8 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run compile",
+    "package": "pnpm run compile && pnpm vsce package --no-dependencies",
+    "publish": "pnpm vsce publish --no-dependencies",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
@@ -47,6 +62,7 @@
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
     "mocha": "^10.2.0",
+    "prettier": "^3.1.1",
     "typescript": "^5.1.3"
   },
   "dependencies": {
