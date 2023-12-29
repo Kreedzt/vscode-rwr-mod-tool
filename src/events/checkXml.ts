@@ -3,7 +3,7 @@ import { parseXML } from "../utils/parse";
 import { getAllPosition } from "../utils/file";
 import { FileResResolver } from "./fileResResolver";
 
-const FILEREF_PROPERTY_KEYS: string[] = ['@_file', '@_file_name'];
+const FILEREF_PROPERTY_KEYS: string[] = ["@_file", "@_file_name", "@_filename", "@_fileref"];
 
 interface IExtractStructFileResItem {
     propertyName: string;

@@ -1,9 +1,7 @@
 # Change Log
 
-All notable changes to the "vscode-rwr-mod-tool" extension will be documented in this file.
+All notable changes to the "RWR Mod Tool" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## 0.0.2
 
-## [Unreleased]
-
-- Initial release
+- add more file ref scan property("@_file", "@_file_name", "@_filename", "@_fileref")
