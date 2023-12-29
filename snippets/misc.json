@@ -1,0 +1,34 @@
+{
+    "misc.inventory": {
+        "prefix": "rwr-inventory",
+        "description": "rwr inventory",
+        "body": [
+            "<inventory encumbrance=\"$1\" price=\"$2\" />",
+            "$3"
+        ]
+    },
+    "misc.capacity": {
+        "prefix": "rwr-capacity",
+        "description": "rwr capacity",
+        "body": [
+            "<capacity value=\"${1|0,1|}\" source=\"${2|rank|}\" source_value=\"${3|0.0|}\" />",
+            "$4"
+        ]
+    },
+    "misc.effect": {
+        "prefix": "rwr-effect",
+        "description": "rwr effect",
+        "body": [
+            "<effect class=\"$1\" ref=\"$2\" />",
+            "$3"
+        ]
+    },
+    "misc.hud_icon": {
+        "prefix": "rwr-hud-icon",
+        "description": "rwr hud icon",
+        "body": [
+            "<hud_icon filename=\"$1\" />",
+            "$2"
+        ]
+    }
+}

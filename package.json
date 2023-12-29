@@ -73,6 +73,10 @@
       {
         "language": "xml",
         "path": "./snippets/weapon.json"
+      },
+      {
+        "language": "xml",
+        "path": "./snippets/misc.json"
       }
     ]
   },

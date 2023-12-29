@@ -3,8 +3,8 @@
         "prefix": "rwr-weapon",
         "description": "rwr weapon register",
         "body": [
-            "<weapon file=\"$1\" key=\"$2\">$3</weapon>",
-            "$4"
+            "<weapon file=\"$1\" key=\"$2\" />",
+            "$3"
         ]
     },
     "weapon.refdefine": {
@@ -112,14 +112,6 @@
         "description": "rwr weapon model",
         "body": [
             "<model filename=\"$1\" />",
-            "$2"
-        ]
-    },
-    "weapon.hud_icon": {
-        "prefix": "rwr-hud_icon",
-        "description": "rwr weapon hud_icon",
-        "body": [
-            "<hud_icon filename=\"$1\" />",
             "$2"
         ]
     },
