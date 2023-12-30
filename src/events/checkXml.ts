@@ -46,7 +46,7 @@ const extractStructFileRef = (
         currentLoop = nextLoop;
     }
 
-    return result.filter(v => v.propertyValue.trim() !== '');
+    return result.filter((v) => v.propertyValue.trim() !== '');
 };
 
 interface ICheckRes {
@@ -76,8 +76,8 @@ const checkRefFileExists = async (
 
     let allFileRefSet = new Set<string>();
 
-    allStructFileRef.forEach(p => {
-       allFileRefSet.add(p.propertyValue);
+    allStructFileRef.forEach((p) => {
+        allFileRefSet.add(p.propertyValue);
     });
 
     const globPattern = `**/{${[...allFileRefSet].join(',')}}`;
@@ -86,13 +86,13 @@ const checkRefFileExists = async (
 
     let allAvaiableFileSet = new Set<string>();
 
-    allFieldsResult.forEach(u => {
+    allFieldsResult.forEach((u) => {
         const sp = u.path.split('/');
         const fileName = sp[sp.length - 1];
         allAvaiableFileSet.add(fileName);
     });
 
-    allStructFileRef.forEach(p => {
+    allStructFileRef.forEach((p) => {
         const result = allAvaiableFileSet.has(p.propertyValue);
 
         if (!result) {
@@ -101,7 +101,7 @@ const checkRefFileExists = async (
         checkRes.properties.push({
             name: p.propertyName,
             file: p.propertyValue,
-            result: allAvaiableFileSet.has(p.propertyValue)
+            result: allAvaiableFileSet.has(p.propertyValue),
         });
     });
 
@@ -152,17 +152,33 @@ export const scanFile = async (e: vscode.Uri) => {
 export const startXmlCheck = async () => {
     console.log('startXmlCheck');
 
-    // clear warning
-    FileResResolver.self().clear();
+    vscode.window.withProgress(
+        {
+            location: vscode.ProgressLocation.Window,
+            cancellable: false,
+            title: 'RWR Mod Tool: Scanning file...',
+        },
+        async (progress) => {
+            progress.report({
+                increment: 0
+            });
+            // clear warning
+            FileResResolver.self().clear();
 
-    const [calls, factions, items, weapons] = await Promise.all([
-        vscode.workspace.findFiles('**/calls/*.{xml,call}'),
-        vscode.workspace.findFiles('**/factions/*.{models,xml}'),
-        vscode.workspace.findFiles('**/items/*.{carry_item,base}'),
-        vscode.workspace.findFiles('**/weapons/*.{weapon,xml}'),
-    ]);
+            const [calls, factions, items, weapons] = await Promise.all([
+                vscode.workspace.findFiles('**/calls/*.{xml,call}'),
+                vscode.workspace.findFiles('**/factions/*.{models,xml}'),
+                vscode.workspace.findFiles('**/items/*.{carry_item,base}'),
+                vscode.workspace.findFiles('**/weapons/*.{weapon,xml}'),
+            ]);
 
-    const allUri = [...calls, ...factions, ...items, ...weapons];
-    console.log('allUrl', allUri);
-    await Promise.all(allUri.map(scanFile));
+            const allUri = [...calls, ...factions, ...items, ...weapons];
+            console.log('allUrl', allUri);
+            await Promise.all(allUri.map(scanFile));
+
+            progress.report({
+                increment: 100
+            });
+        },
+    );
 };
