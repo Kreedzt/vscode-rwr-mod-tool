@@ -1,1 +1,155 @@
-{}
+{
+    "faction.register": {
+        "prefix": "rwr-faction",
+        "description": "rwr faction register",
+        "body": [
+            "<faction file=\"$1\" />",
+            "$2"
+        ]
+    },
+    "faction.define": {
+        "prefix": "rwr-faction-define",
+        "description": "rwr faction define",
+        "body": [
+            "<faction",
+            "\tname=\"$1\"",
+            "\tcolor=\"$2\"",
+            "\tfirstnames_file=\"$3\"",
+            "\tlastnames_file=\"$4\"",
+            "\tchat_icon_filename=\"$5\"",
+            "\tchat_icon_filename_supporter=\"$6\"",
+            "\tchat_icon_commander_filename=\"$7\"",
+            "\tcampaign_completion_icon_filename=\"$8\"",
+            "\tradio_queue_size=\"$9\"",
+            "\tsupporter_high_skinpack_xp=\"$10\"",
+            ">",
+            "$11",
+            "</faction>",
+            "$12"
+        ]
+    },
+    "faction.rank": {
+        "prefix": "rwr-faction-rank",
+        "description": "rwr faction rank",
+        "body": [
+            "<rank xp=\"$1\" name=\"$2\" >",
+            "$3",
+            "</rank>",
+            "$4"
+        ]
+    },
+    "faction.soldier": {
+        "prefix": "rwr-faction-soldier",
+        "description": "rwr faction soldier",
+        "body": [
+            "<soldier name=\"$1\" spawn_score=\"$2\">",
+            "$3",
+            "</soldier>",
+            "$4"
+        ]
+    },
+    "faction.chracter": {
+        "prefix": "rwr-faction-chracter",
+        "description": "rwr faction chracter",
+        "body": [
+            "<character filename=\"$1\">",
+            "$2",
+            "</character>",
+            "$3"
+        ]
+    },
+    "faction.parameter": {
+        "prefix": "rwr-faction-parameter",
+        "description": "rwr faction parameter",
+        "body": [
+            "<parameter class=\"$1\" value=\"$2\" />",
+            "$3"
+        ]
+    },
+    "faction.ai.register": {
+        "prefix": "rwr-ai-register",
+        "description": "rwr ai register",
+        "body": [
+            "<ai filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "faction.resources": {
+        "prefix": "rwr-faction-resources",
+        "description": "rwr faction resources",
+        "body": [
+            "<resources",
+            "\tclear_weapons=\"$1\"",
+            "\tclear_vehicles=\"$2\"",
+            "\tclear_grenades=\"$3\"",
+            "\tclear_carry_items=\"$4\"",
+            "\tclear_calls=\"$5\"",
+            ">",
+            "$6",
+            "</resources>",
+            "$7"
+        ]
+    },
+    "faction.item.class.existence.config": {
+        "prefix": "rwr-faction-item-class-existence-config",
+        "description": "rwr faction item class existence config",
+        "body": [
+            "<item_class_existence_config>",
+            "$1",
+            "</item_class_existence_config>",
+            "$2"
+        ]
+    },
+    "faction.item.class.existence": {
+        "prefix": "rwr-faction-item-class-existence",
+        "description": "rwr faction item class existence",
+        "body": [
+            "<item_class_existence class=\"$1\" slot=\"$2\" probability=\"$3\" />",
+            "$2"
+        ]
+    },
+    "faction.attribute_config": {
+        "prefix": "rwr-faction-attribute-config",
+        "description": "rwr faction attribute config",
+        "body": [
+            "<attribute_config class=\"$1\">",
+            "$2",
+            "</attribute_config>",
+            "$3"
+        ]
+    },
+    "faction.attribute": {
+        "prefix": "rwr-faction-attribute",
+        "description": "rwr faction attribute",
+        "body": [
+            "<attribute weight=\"$1\" min=\"$2\" max=\"$3\" />",
+            "$3"
+        ]
+    },
+    "faction.squad.config.register": {
+        "prefix": "rwr-faction-squad-config",
+        "description": "rwr faction squad configs",
+        "body": [
+            "<squad_config file=\"$1\" />",
+            "$2"
+        ]
+    },
+    "faction.character.comment": {
+        "prefix": "rwr-faction-comment",
+        "description": "rwr character comment",
+        "body": [
+            "<comment key=\"$1\" text=\"$2\" />",
+            "$3"
+        ]
+    },
+    "faction.character.dialogue": {
+        "prefix": "rwr-faction-dialogue",
+        "description": "rwr faction dialogue",
+        "body": [
+            "<dialogue key=\"$1\">",
+            "$2",
+            "</dialogue>",
+            "$3"
+        ]
+    }
+}

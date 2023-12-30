@@ -1,1 +1,174 @@
-{}
+{
+    "vehicle.vehicles": {
+        "prefix": "rwr-vehicles",
+        "description": "rwr vehicles",
+        "body": [
+            "<vehicles>",
+            "$1",
+            "</vehicles>",
+            "$2"
+        ]
+    },
+    "vehicle.register": {
+        "prefix": "rwr-vehicle",
+        "description": "rwr vehicle",
+        "body": [
+            "<vehicle file=\"$1\" />",
+            "$4"
+        ]
+    },
+    "vehicle.define": {
+        "prefix": "rwr-vehicle-define",
+        "description": "rwr vehicle define",
+        "body": [
+            "<vehicle",
+            "\tname=\"$1\"",
+            "\tkey=\"$2\"",
+            "\tmap_view_atlas_index=\"$3\"",
+            "\ttime_to_live=\"$4\"",
+            "\ttime_to_live_unsteerable=\"$5\"",
+            "\tshould_be_destroyed_on_death=\"$6\"",
+            "\tmax_character_collision_speed_on_normal_ground=\"$7\"",
+            "\tsimulated_damage=\"$8\"",
+            "\tusable_for_cover=\"$9\"",
+            "\tallow_ai_to_use=\"$10\"",
+            ">",
+            "$11",
+            "</vehicle>"
+        ]
+    },
+    "vehicle.tire.set": {
+        "prefix": "rwr-tire-set",
+        "description": "rwr tire set",
+        "body": [
+            "<tire offset=\"$1\" radius=\"$2\" />"
+        ]
+    },
+    "vehicle.control": {
+        "prefix": "rwr-vehicle-control",
+        "description": "rwr vehicle control",
+        "body": [
+            "<control",
+            "\tmax_speed=\"$1\"",
+            "\tacceleration=\"$2\"",
+            "\tmax_reverse_speed=\"$3\"",
+            "\tmax_rotation_speed=\"$4\"",
+            "\tmax_water_depth=\"$5\"",
+            "/>"
+        ]
+    },
+    "vehicle.physics": {
+        "prefix": "rwr-vehicle-physics",
+        "description": "rwr vehicle physics",
+        "body": [
+            "<physics",
+            "\tmax_health=\"$1\"",
+            "\tmass=\"$2\"",
+            "\tblast_push_threshold=\"$3\"",
+            "\tblast_damage_threshold=\"$4\"",
+            "\textent=\"$5\"",
+            "\toffset=\"$6\"",
+            "\ttop_offset=\"$7\"",
+            "\tcollision_model_position=\"$8\"",
+            "\tcollision_model_extent=\"$9\"",
+            "\tcollision_response_factor=\"$10\"",
+            "\tvisual_offset=\"$11\"",
+            "\tremove_collision_threshold=\"$12\"",
+            "\tvehicle_collision_damage_factor=\"$13\"",
+            "\tfriction_offset=\"$14\"",
+            "\tgravity=\"$15\"",
+            "\tdestroy_on_top_hit=\"$16\"",
+            "\tdestroy_on_top_hit_time=\"$17\"",
+            "\ttop_hit_tracking_time=\"$18\"",
+            "/>"
+        ]
+    },
+    "vehicle.sky.diving": {
+        "prefix": "rwr-vehicle-sky-diving",
+        "description": "rwr vehicle sky diving",
+        "body": [
+            "<sky_diving",
+            "\tchute_offset=\"${1|0 0 0|}\"",
+            "\ttrigger_height=\"$2\"",
+            "\tgravity=\"$3\"",
+            "\tmesh_filename=\"$4\"",
+            "\ttexture_filename=\"$5\"",
+            "/>",
+            "$6"
+        ]
+    },
+    "vehicle.turret": {
+        "prefix": "rwr-vehicle-turret",
+        "description": "rwr vehicle turret",
+        "body": [
+            "<turret",
+            "\toffset=\"$1\"",
+            "\tweapon_key=\"$2\"",
+            "\tweapon_offset=\"$3\"",
+            "\tweapon_recoil=\"$4\"",
+            "\tphysics_recoil=\"$5\"",
+            "\tmax_rotation_step=\"$6\"",
+            "\trotation_speed=\"$7\"",
+            "\trotation_range=\"$8\"",
+            "/>",
+            "$10"
+        ]
+    },
+    "vehicle.rev.sound": {
+        "prefix": "rwr-vehicle-rev-sound",
+        "description": "rwr vehicle rev sound",
+        "body": [
+            "<rev_sound",
+            "\tlow_pitch=\"$1\"",
+            "\thigh_pitch=\"$2\"",
+            "\tlow_rev=\"$3\"",
+            "\thigh_rev=\"$4\"",
+            "\tvolume=\"$5\"",
+            "/>",
+            "$6"
+        ]
+    },
+    "vehicle.spawn.point": {
+        "prefix": "rwr-vehicle-spawn-point",
+        "description": "rwr vehicle spawn point",
+        "body": [
+            "<spawn_point player_only=\"$1\" offset=\"${2|0 0 0|}\" />",
+            "$3"
+        ]
+    },
+    "vehicle.event": {
+        "prefix": "rwr-vehicle-event",
+        "description": "rwr vehicle event",
+        "body": [
+            "<event>",
+            "$1",
+            "</event>",
+            "$2"
+        ]
+    },
+    "vehicle.trigger": {
+        "prefix": "rwr-vehicle-trigger",
+        "description": "rwr vehicle trigger",
+        "body": [
+            "<trigger class=\"$1\" />",
+            "$2"
+        ]
+    },
+    "vehicle.result": {
+        "prefix": "rwr-vehicle-result",
+        "description": "rwr vehicle result",
+        "body": [
+            "<result",
+            "\tclass=\"$1\"",
+            "\tinstance_class=\"$2\"",
+            "\tinstance_key=\"$3\"",
+            "\tmin_amount=\"$4\"",
+            "\tmax_amount=\"$5\"",
+            "\toffset=\"${6|0 1 0|}\"",
+            "\tposition_spread=\"${7|0 0 0|}\"",
+            "\tdirection_spread=\"${8|0 0 |}\"",
+            "/>",
+            "$9"
+        ]
+    }
+}

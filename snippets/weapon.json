@@ -72,25 +72,6 @@
             "$21"
         ]
     },
-    "weapon.drop_on_death_result": {
-        "prefix": "rwr-drop_on_death_result",
-        "description": "rwr weapon drop_on_death_result",
-        "body": [
-            "<drop_on_death_result",
-            "\tclass=\"${1|spawn|}\"",
-            "\tinstance_class=\"${2|projectile|}\"",
-            "\tinstance_key=\"$3\"",
-            "\tmin_amount=\"${4|1|}\"",
-            "\tmax_amount=\"${5|1|}\"",
-            "\toffset=\"${6|0 0 0|}\"",
-            "\tposition_spread=\"${7|0 0|}\"",
-            "\tdirection_spread=\"${8|0 0|}\"",
-            ">",
-            "$9",
-            "</drop_on_death_result>",
-            "$10"
-        ]
-    },
     "weapon.animation": {
         "prefix": "rwr-animation",
         "description": "rwr weapon animation",

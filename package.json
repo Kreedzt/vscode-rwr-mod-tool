@@ -86,6 +86,7 @@
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
+    "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },

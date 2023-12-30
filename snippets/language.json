@@ -1,1 +1,107 @@
-{}
+{
+    "language.register": {
+        "prefix": "rwr-language-register",
+        "description": "rwr language register",
+        "body": [
+            "<language id=\"$1\" name=\"$2\" font_key=\"$3\" encoding=\"$4\" />"
+        ]
+    },
+    "language.translation.register": {
+        "prefix": "rwr-language-translation-register",
+        "description": "rwr language translation register",
+        "body": [
+            "<translation file=\"$1\" />",
+            "$2"
+        ]
+    },
+    "language.translation.define": {
+        "prefix": "rwr-language-translation-define",
+        "description": "rwr language translation define",
+        "body": [
+            "<translation>",
+            "$3",
+            "</translation>"
+        ]
+    },
+    "language.ui": {
+        "prefix": "rwr-language-ui",
+        "description": "rwr language ui",
+        "body": [
+            "<ui>",
+            "$1",
+            "</ui>",
+            "$2"
+        ]
+    },
+    "language.text": {
+        "prefix": "rwr-language-text",
+        "description": "rwr language text",
+        "body": [
+            "<text key=\"$1\" text=\"$2\" />",
+            "$3"
+        ]
+    },
+    "language.intro": {
+        "prefix": "rwr-language-intro",
+        "description": "rwr language intro",
+        "body": [
+            "<intro>",
+            "$1",
+            "</intro>",
+            "$2"
+        ]
+    },
+    "language.journal": {
+        "prefix": "rwr-language-journal",
+        "description": "rwr language journal",
+        "body": [
+            "<journal>",
+            "$1",
+            "</journal>",
+            "$2"
+        ]
+    },
+    "language.entry": {
+        "prefix": "rwr-language-entry",
+        "description": "rwr language entry",
+        "body": [
+            "<entry key=\"$1\">",
+            "$3",
+            "</entry>"
+        ]
+    },
+    "language.title": {
+        "prefix": "rwr-language-title",
+        "description": "rwr language title",
+        "body": [
+            "<title value=\"$1\" />",
+            "$2"
+        ]
+    },
+    "language.image": {
+        "prefix": "rwr-language-image",
+        "description": "rwr language image",
+        "body": [
+            "<image filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "language.font.configs": {
+        "prefix": "rwr-language-font-configs",
+        "description": "rwr language font_configs",
+        "body": [
+            "<font_configs>",
+            "$1",
+            "</font_configs>",
+            "$2"
+        ]
+    },
+    "language.font.config": {
+        "prefix": "rwr-language-font-config",
+        "description": "rwr language font_config",
+        "body": [
+            "<font_config font=\"$1\" letter_spacing=\"$2\" offset=\"${3|0 0 0|}\" />",
+            "$4"
+        ]
+    }
+}

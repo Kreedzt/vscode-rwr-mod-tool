@@ -8,6 +8,16 @@ const FILEREF_PROPERTY_KEYS: string[] = [
     '@_file_name',
     '@_filename',
     '@_fileref',
+    // faction define
+    "@_firstnames_file",
+    "@_lastnames_file",
+    "@_chat_icon_filename",
+    "@_chat_icon_filename_supporter",
+    "@_chat_icon_commander_filename",
+    "@_campaign_completion_icon_filename",
+    // vehicle define
+    "@_mesh_filename",
+    "@_texture_filename"
 ];
 
 interface IExtractStructFileResItem {
