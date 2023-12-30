@@ -21,11 +21,13 @@ export class FileResResolver {
         this.diagnostics?.clear();
     }
 
-    uniqueRangeList(rangeList: Array<{
-        line: number;
-        character: number;
-        file: string;
-    }>) {
+    uniqueRangeList(
+        rangeList: Array<{
+            line: number;
+            character: number;
+            file: string;
+        }>,
+    ) {
         const uniqueSet = new Set<string>();
         const dunplicateIndex = new Set<number>();
 
@@ -42,24 +44,31 @@ export class FileResResolver {
         return rangeList.filter((_r, i) => !dunplicateIndex.has(i));
     }
 
-    addMissingFileWarn(uri: vscode.Uri, rangeList: Array<{
-        line: number;
-        character: number;
-        file: string;
-    }>) {
+    addMissingFileWarn(
+        uri: vscode.Uri,
+        rangeList: Array<{
+            line: number;
+            character: number;
+            file: string;
+        }>,
+    ) {
         console.log(`addMissingFileWarn:`, uri, rangeList);
 
-
-
-        this.diagnostics?.set(uri, this.uniqueRangeList(rangeList).map(r => {
-            return {
-                severity: vscode.DiagnosticSeverity.Warning,
-                message: `Resource not found: ${r.file}`,
-                range: new vscode.Range(
-                    new vscode.Position(r.line, r.character),
-                    new vscode.Position(r.line, r.character + r.file.length)
-                )
-            }
-        }));
+        this.diagnostics?.set(
+            uri,
+            this.uniqueRangeList(rangeList).map((r) => {
+                return {
+                    severity: vscode.DiagnosticSeverity.Warning,
+                    message: `Resource not found: ${r.file}`,
+                    range: new vscode.Range(
+                        new vscode.Position(r.line, r.character),
+                        new vscode.Position(
+                            r.line,
+                            r.character + r.file.length,
+                        ),
+                    ),
+                };
+            }),
+        );
     }
 }

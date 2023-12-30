@@ -1,5 +1,4 @@
-
-import { XMLParser } from "fast-xml-parser";
+import { XMLParser } from 'fast-xml-parser';
 import * as vscode from 'vscode';
 
 export const parseXML = (content: string) => {
@@ -12,9 +11,9 @@ export const parseXML = (content: string) => {
         numberParseOptions: {
             hex: true,
             leadingZeros: false,
-            eNotation: true
+            eNotation: true,
         },
     });
 
     return parser.parse(content);
-}
+};

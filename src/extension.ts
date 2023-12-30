@@ -7,8 +7,8 @@ import { registerEventList } from './events';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	registerCommandList(context);
-	registerEventList(context);
+    registerCommandList(context);
+    registerEventList(context);
 }
 
 // This method is called when your extension is deactivated

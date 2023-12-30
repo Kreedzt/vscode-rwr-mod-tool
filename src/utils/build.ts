@@ -1,5 +1,4 @@
-
-import { XMLBuilder } from "fast-xml-parser";
+import { XMLBuilder } from 'fast-xml-parser';
 
 export const buildXML = (content: Record<string, any>): string => {
     const builder = new XMLBuilder({
@@ -9,8 +8,8 @@ export const buildXML = (content: Record<string, any>): string => {
         indentBy: '    ',
         suppressUnpairedNode: false,
         format: true,
-        suppressEmptyNode: true
+        suppressEmptyNode: true,
     });
 
     return builder.build(content);
-}
+};

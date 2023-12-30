@@ -5,11 +5,11 @@ export interface IWeaponRegisterXML {
 export interface IAllWeaponsRegisterXML {
     weapons: {
         weapon: IWeaponRegisterXML[];
-    }
+    };
 }
 
 export interface IWeaponXML {
     weapon: {
         '@_key': string;
-    }
+    };
 }

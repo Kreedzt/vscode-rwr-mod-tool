@@ -5,27 +5,27 @@ export const registerEventList = async (context: vscode.ExtensionContext) => {
     console.log('registerEventList...');
 
     startXmlCheck();
-    
+
     context.subscriptions.push(
-        vscode.workspace.onDidSaveTextDocument(e => {
+        vscode.workspace.onDidSaveTextDocument((e) => {
             console.log('onDidSaveTextDocument: startXmlCheck');
             startXmlCheck();
         }),
-        vscode.workspace.onDidCreateFiles(e => {
+        vscode.workspace.onDidCreateFiles((e) => {
             console.log('onDidCreateFiles: startXmlCheck');
             startXmlCheck();
         }),
-        vscode.workspace.onDidDeleteFiles(e => {
+        vscode.workspace.onDidDeleteFiles((e) => {
             console.log('onDidDeleteFiles: startXmlCheck');
             startXmlCheck();
         }),
-        vscode.workspace.onDidChangeWorkspaceFolders(e => {
+        vscode.workspace.onDidChangeWorkspaceFolders((e) => {
             console.log('onDidChangeWorkspaceFolders: startXmlCheck');
             startXmlCheck();
         }),
-        vscode.workspace.onDidRenameFiles(e => {
+        vscode.workspace.onDidRenameFiles((e) => {
             console.log('onDidRenameFiles: startXmlCheck');
             startXmlCheck();
-        })
-    )
-}
+        }),
+    );
+};

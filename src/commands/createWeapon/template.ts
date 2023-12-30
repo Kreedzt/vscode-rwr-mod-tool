@@ -179,27 +179,27 @@ on_ground_up="0 0 1"
 </weapon>`;
 
 export class TemplateService {
-	private static cls: TemplateService;
+    private static cls: TemplateService;
 
-	static getCls() {
-		if (!TemplateService.cls) {
-			TemplateService.cls = new TemplateService();
-		}
+    static getCls() {
+        if (!TemplateService.cls) {
+            TemplateService.cls = new TemplateService();
+        }
 
-		return TemplateService.cls;
-	}
+        return TemplateService.cls;
+    }
 
-	private template: string = TEMPLATE_CONTENT;
-	private builder: XMLBuilder = new XMLBuilder({
+    private template: string = TEMPLATE_CONTENT;
+    private builder: XMLBuilder = new XMLBuilder({
         ignoreAttributes: false,
         commentPropName: 'comment',
         // 4 spaces
         indentBy: '    ',
         suppressUnpairedNode: false,
         format: true,
-        suppressEmptyNode: true
+        suppressEmptyNode: true,
     });
-	private parser: XMLParser = new XMLParser({
+    private parser: XMLParser = new XMLParser({
         parseAttributeValue: true,
         ignoreAttributes: false,
         allowBooleanAttributes: true,
@@ -208,26 +208,24 @@ export class TemplateService {
         numberParseOptions: {
             hex: true,
             leadingZeros: false,
-            eNotation: true
+            eNotation: true,
         },
     });
-	private parserRes: IWeaponXML | null = null;
+    private parserRes: IWeaponXML | null = null;
 
-	loadTemplate() {
-		this.parserRes = this.parser.parse(this.template) as IWeaponXML;
-		console.log('Touch this.parserRes');
-		console.log(this.parserRes);
-	}
+    loadTemplate() {
+        this.parserRes = this.parser.parse(this.template) as IWeaponXML;
+        console.log('Touch this.parserRes');
+        console.log(this.parserRes);
+    }
 
-	getXMLContent(params: {
-		weaponName: string;
-	}): string {
+    getXMLContent(params: { weaponName: string }): string {
         this.loadTemplate();
         if (!this.parserRes) {
             return '';
         }
 
-		// TODO: Error: animte tag not effect
+        // TODO: Error: animte tag not effect
         // const newWeapon: IWeaponXML = {
         //     ...this.parserRes,
         //     weapon: {
@@ -236,10 +234,13 @@ export class TemplateService {
         //     }
         // }
 
-		// return this.builder.build(newWeapon);
+        // return this.builder.build(newWeapon);
 
-		const newWeaponStr = this.template.replace('key="normal.weapon"', `key="${params.weaponName}.weapon"`);
+        const newWeaponStr = this.template.replace(
+            'key="normal.weapon"',
+            `key="${params.weaponName}.weapon"`,
+        );
 
-		return newWeaponStr;
-	}
+        return newWeaponStr;
+    }
 }

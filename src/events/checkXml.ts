@@ -9,15 +9,15 @@ const FILEREF_PROPERTY_KEYS: string[] = [
     '@_filename',
     '@_fileref',
     // faction define
-    "@_firstnames_file",
-    "@_lastnames_file",
-    "@_chat_icon_filename",
-    "@_chat_icon_filename_supporter",
-    "@_chat_icon_commander_filename",
-    "@_campaign_completion_icon_filename",
+    '@_firstnames_file',
+    '@_lastnames_file',
+    '@_chat_icon_filename',
+    '@_chat_icon_filename_supporter',
+    '@_chat_icon_commander_filename',
+    '@_campaign_completion_icon_filename',
     // vehicle define
-    "@_mesh_filename",
-    "@_texture_filename"
+    '@_mesh_filename',
+    '@_texture_filename',
 ];
 
 interface IExtractStructFileResItem {
@@ -170,7 +170,7 @@ export const startXmlCheck = async () => {
         },
         async (progress) => {
             progress.report({
-                increment: 0
+                increment: 0,
             });
             // clear warning
             FileResResolver.self().clear();
@@ -187,7 +187,7 @@ export const startXmlCheck = async () => {
             await Promise.all(allUri.map(scanFile));
 
             progress.report({
-                increment: 100
+                increment: 100,
             });
         },
     );

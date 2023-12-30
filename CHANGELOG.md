@@ -1,6 +1,10 @@
 # Change Log
 
-All notable changes to the "RWR Mod Tool" extension will be documented in this file.
+## 0.1.0
+
+- add file scan loading
+- fixed file scan check cause vscode lag
+- add tempalte code snippets(prefix: `rwr-`)
 
 ## 0.0.2
 
