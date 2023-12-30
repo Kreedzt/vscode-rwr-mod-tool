@@ -1,31 +1,38 @@
-import * as vscode from "vscode";
-import { parseXML } from "../utils/parse";
-import { getAllPosition } from "../utils/file";
-import { FileResResolver } from "./fileResResolver";
+import * as vscode from 'vscode';
+import { parseXML } from '../utils/parse';
+import { getAllPosition } from '../utils/file';
+import { FileResResolver } from './fileResResolver';
 
-const FILEREF_PROPERTY_KEYS: string[] = ["@_file", "@_file_name", "@_filename", "@_fileref"];
+const FILEREF_PROPERTY_KEYS: string[] = [
+    '@_file',
+    '@_file_name',
+    '@_filename',
+    '@_fileref',
+];
 
 interface IExtractStructFileResItem {
     propertyName: string;
     propertyValue: string;
 }
 
-const extractStructFileRef = (struct: Record<string, any>): IExtractStructFileResItem[] => {
+const extractStructFileRef = (
+    struct: Record<string, any>,
+): IExtractStructFileResItem[] => {
     const result: IExtractStructFileResItem[] = [];
 
     let currentLoop = [struct];
 
     while (currentLoop.length !== 0) {
         const nextLoop: any[] = [];
-        currentLoop.forEach(s => {
+        currentLoop.forEach((s) => {
             Object.entries(s).forEach(([k, v]) => {
                 if (FILEREF_PROPERTY_KEYS.includes(k)) {
                     result.push({
                         propertyName: k,
-                        propertyValue: v
+                        propertyValue: v,
                     });
                 } else if (Array.isArray(v)) {
-                    v.forEach(arrItem => {
+                    v.forEach((arrItem) => {
                         if (typeof arrItem === 'object') {
                             nextLoop.push(arrItem);
                         }
@@ -39,8 +46,8 @@ const extractStructFileRef = (struct: Record<string, any>): IExtractStructFileRe
         currentLoop = nextLoop;
     }
 
-    return result;
-}
+    return result.filter(v => v.propertyValue.trim() !== '');
+};
 
 interface ICheckRes {
     result: boolean;
@@ -51,27 +58,52 @@ interface ICheckRes {
     }>;
 }
 
-const checkRefFileExists = async (e: vscode.Uri, fileContent: string, struct: any): Promise<ICheckRes> => {
+const checkRefFileExists = async (
+    e: vscode.Uri,
+    fileContent: string,
+    struct: any,
+): Promise<ICheckRes> => {
     const checkRes: ICheckRes = {
         result: true,
-        properties: []
+        properties: [],
     };
 
-    await Promise.all(
-        extractStructFileRef(struct).map(async (p) => {
-            const res = await vscode.workspace.findFiles(`**/${p.propertyValue}`);
+    const allStructFileRef = extractStructFileRef(struct);
 
-            let result = res.length > 0;
+    if (allStructFileRef.length === 0) {
+        return checkRes;
+    }
 
-            if (!result) {
-                checkRes.result = false;
-            }
-            checkRes.properties.push({
-                name: p.propertyName,
-                file: p.propertyValue,
-                result
-            });
-        }));
+    let allFileRefSet = new Set<string>();
+
+    allStructFileRef.forEach(p => {
+       allFileRefSet.add(p.propertyValue);
+    });
+
+    const globPattern = `**/{${[...allFileRefSet].join(',')}}`;
+
+    const allFieldsResult = await vscode.workspace.findFiles(globPattern);
+
+    let allAvaiableFileSet = new Set<string>();
+
+    allFieldsResult.forEach(u => {
+        const sp = u.path.split('/');
+        const fileName = sp[sp.length - 1];
+        allAvaiableFileSet.add(fileName);
+    });
+
+    allStructFileRef.forEach(p => {
+        const result = allAvaiableFileSet.has(p.propertyValue);
+
+        if (!result) {
+            checkRes.result = false;
+        }
+        checkRes.properties.push({
+            name: p.propertyName,
+            file: p.propertyValue,
+            result: allAvaiableFileSet.has(p.propertyValue)
+        });
+    });
 
     // mark error
     const rangeList: Array<{
@@ -79,23 +111,26 @@ const checkRefFileExists = async (e: vscode.Uri, fileContent: string, struct: an
         character: number;
         file: string;
     }> = [];
-    checkRes.properties.filter(p => !p.result).forEach(property => {
-        const pos = getAllPosition(fileContent, property.file);
+    checkRes.properties
+        .filter((p) => !p.result)
+        .forEach((property) => {
+            const pos = getAllPosition(fileContent, property.file);
 
-        pos.forEach(p => {
-            rangeList.push({
-                line: p.line,
-                character: p.character,
-                file: property.file
-            })
-        })
-    });
-    FileResResolver.self().addMissingFileWarn(e, rangeList);
+            pos.forEach((p) => {
+                rangeList.push({
+                    line: p.line,
+                    character: p.character,
+                    file: property.file,
+                });
+            });
+        });
 
-    console.log(`checkRefFileExists:`, checkRes);
+    if (!checkRes.result) {
+        FileResResolver.self().addMissingFileWarn(e, rangeList);
+    }
 
     return checkRes;
-}
+};
 
 export const scanFile = async (e: vscode.Uri) => {
     const file = await vscode.workspace.fs.readFile(e);
@@ -106,13 +141,13 @@ export const scanFile = async (e: vscode.Uri) => {
     const checkRes = await checkRefFileExists(e, fileContent, xmlStruct);
 
     if (!checkRes.result) {
-        checkRes.properties.forEach(p => {
+        checkRes.properties.forEach((p) => {
             if (!p.result) {
                 console.log(`Resource not found: :${p.file}`);
             }
         });
     }
-}
+};
 
 export const startXmlCheck = async () => {
     console.log('startXmlCheck');
@@ -130,4 +165,4 @@ export const startXmlCheck = async () => {
     const allUri = [...calls, ...factions, ...items, ...weapons];
     console.log('allUrl', allUri);
     await Promise.all(allUri.map(scanFile));
-}
+};
