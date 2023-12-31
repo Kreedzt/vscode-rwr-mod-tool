@@ -1,7 +1,9 @@
 import * as vscode from 'vscode';
+import * as _ from 'lodash';
 import { parseXML } from '../utils/parse';
 import { getAllPosition } from '../utils/file';
 import { FileResResolver } from './fileResResolver';
+import { TaskService } from '../services/task';
 
 const FILEREF_PROPERTY_KEYS: string[] = [
     '@_file',
@@ -159,8 +161,12 @@ export const scanFile = async (e: vscode.Uri) => {
     }
 };
 
-export const startXmlCheck = async () => {
+const startXmlCheckTask = async () => {
     console.log('startXmlCheck');
+
+    if (!TaskService.self().getReady()) {
+        return;
+    }
 
     vscode.window.withProgress(
         {
@@ -184,11 +190,27 @@ export const startXmlCheck = async () => {
 
             const allUri = [...calls, ...factions, ...items, ...weapons];
             console.log('allUrl', allUri);
-            await Promise.all(allUri.map(scanFile));
+
+            let processed = 0;
+
+            await Promise.all(allUri.map(async (f) => {
+                await scanFile(f);
+
+                ++processed;
+                const progressPercent = (processed / allUri.length) * 100;
+                progress.report({
+                    increment: (1 / allUri.length) * 100,
+                    message: `${progressPercent.toFixed()}%`,
+                });
+            }));
 
             progress.report({
                 increment: 100,
             });
         },
     );
+};
+
+export const startXmlCheck = () => {
+    _.debounce(startXmlCheckTask, 1000)();
 };

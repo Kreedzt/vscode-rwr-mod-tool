@@ -1,3 +1,4 @@
+import * as prettier from 'prettier';
 interface IPositionItem {
     line: number;
     character: number;
@@ -20,4 +21,21 @@ export const getAllPosition = (
     }
 
     return positions;
+};
+
+const prettierConfig: prettier.Options = {
+    semi: false,
+    parser: "html",
+    printWidth: 80,
+    singleQuote: false,
+    tabWidth: 4,
+    useTabs: false
+};
+
+export const checkXmlFormatted = async (text: string): Promise<boolean> => {
+    return prettier.check(text, prettierConfig);
+};
+
+export const formatXml = async (text: string): Promise<string> => {
+    return prettier.format(text, prettierConfig);
 };
