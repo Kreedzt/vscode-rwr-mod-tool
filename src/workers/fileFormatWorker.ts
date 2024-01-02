@@ -2,13 +2,17 @@ import { parentPort } from 'worker_threads';
 import { formatXml } from '../utils/file';
 
 parentPort?.on('message', async (message) => {
-    console.log('Worker:: on message', message.type, `data length: ${message.data.length}`);
+    console.log('Worker:: on message', message.type, message.id, `data length: ${message.data.length}`);
     switch (message.type) {
         case 'formatXml': {
+            parentPort?.postMessage({
+                type: 'busy',
+                id: message.id
+            });
             try {
                 const resData = await formatXml(message.data);
 
-                console.log('Worker:: success formatXml', resData.length);
+                console.log('Worker:: success formatXml', message.id, resData.length);
 
                 parentPort?.postMessage({
                     type: 'success',
@@ -16,7 +20,7 @@ parentPort?.on('message', async (message) => {
                     id: message.id
                 });
             } catch (e) {
-                console.log('Worker:: failed formatXml');
+                console.log('Worker:: failed formatXml', message.id);
                 parentPort?.postMessage({
                     type: 'error',
                     data: e,
