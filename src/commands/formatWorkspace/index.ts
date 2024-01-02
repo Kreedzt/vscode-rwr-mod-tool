@@ -1,7 +1,60 @@
 import * as vscode from 'vscode';
+import * as url from 'url';
+import * as path from 'path';
 import { checkXmlFormatted, formatXml } from '../../utils/file';
 import { TaskService } from '../../services/task';
 import { ThreadTask } from '../../services/threadTask';
+import { WorkerResolver } from '../../services/workerResolver';
+
+const formatWorkspace2 = async () => {
+    vscode.window.withProgress({
+        location: vscode.ProgressLocation.Notification,
+        title: 'RWR Mod Tool: Formatting workspace...',
+        cancellable: false,
+    }, async (progress, token) => {
+        TaskService.self().pause();
+
+        progress.report({ increment: 0 });
+
+        const uris = await vscode.workspace.findFiles('**/*.{xml,base,weapon,carry_item,models,call}');
+
+        let progressCount = 0;
+        const maxProgressCount = uris.length;
+
+        const workerPath = url.pathToFileURL(path.join(__dirname, '../../workers/fileFormatWorker.js'));
+
+        const resolver = new WorkerResolver(workerPath);
+
+        const fileContents = await Promise.all(uris.map(async (uri) => {
+            return (await vscode.workspace.fs.readFile(uri)).toString();
+        }));
+
+        console.log('fileContents length', fileContents.length);
+
+        await Promise.all(fileContents.map(async (fileContent, index) => {
+            try {
+                console.log('Task started', index, fileContent.length);
+                const formatted = await resolver.callWorkerMethod('formatXml', fileContent) as string;
+                console.log('Task formatted', index, formatted.length);
+                await vscode.workspace.fs.writeFile(uris[index], Buffer.from(formatted));
+                console.log('Task completed', index);
+            } catch (e) {
+                console.error('Task error', uris[index], e);
+            }
+
+            progressCount++;
+            const progressVal = (progressCount / maxProgressCount) * 100;
+            console.log('progress:', progressVal);
+            progress.report({ increment: (1  / maxProgressCount) * 100, message: `${progressVal.toFixed()}%` });
+        }));
+
+        resolver.finish();
+
+        progress.report({ increment: 100 });
+
+        TaskService.self().resume();
+    });
+};
 
 const formatWorkspace = async () => {
     vscode.window.withProgress({
@@ -99,5 +152,8 @@ const formatWorkspace = async () => {
 export const registerFormatWorkspaceCommand = async (context: vscode.ExtensionContext) => {
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-rwr-mod-tool.formatWorkspace', formatWorkspace)
+    );
+    context.subscriptions.push(
+        vscode.commands.registerCommand('vscode-rwr-mod-tool.formatWorkspace2', formatWorkspace2)
     );
 };

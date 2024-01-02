@@ -47,6 +47,10 @@
       {
         "command": "vscode-rwr-mod-tool.formatWorkspace",
         "title": "RWR Mod Tool: Format Workspace"
+      },
+      {
+        "command": "vscode-rwr-mod-tool.formatWorkspace2",
+        "title": "RWR Mod Tool: Format Workspace2"
       }
     ],
     "snippets": [
