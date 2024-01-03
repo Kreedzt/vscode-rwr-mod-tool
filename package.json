@@ -90,6 +90,41 @@
         "language": "xml",
         "path": "./snippets/misc.json"
       }
+    ],
+    "walkthroughs": [
+      {
+        "id": "tutorial",
+        "title": "Get started with RWR Mod Tool",
+        "description": "Learn how to use RWR Mod Tool",
+        "steps": [
+          {
+            "id": "run-command",
+            "title": "Run a command",
+            "description": "Run a command from the command palette",
+            "media": {
+              "image": "./media/commands.png",
+              "altText": "Command palette"
+            }
+          },
+          {
+            "id": "file-ref-check",
+            "title": "Check file references",
+            "description": "Auto check file references",
+            "media": {
+              "image": "./media/file-ref-check.png",
+              "altText": "File reference check"
+            }
+          },
+          {
+            "id": "snippets",
+            "title": "All snippets are prefixed with rwr-",
+            "media": {
+              "image": "./media/snippets.png",
+              "altText": "Snippets"
+            }
+          }
+        ]
+      }
     ]
   },
   "scripts": {
