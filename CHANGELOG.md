@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.4.0
+
+- optimize format error output
+- add command for "Show File Format output"
+
 ## 0.3.0
 
 - optimize format performance
