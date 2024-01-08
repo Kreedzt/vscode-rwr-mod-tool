@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.3.0
+
+- optimize format performance
+- add format error output
+
 ## 0.2.0
 
 - add file scan loading percent tip
