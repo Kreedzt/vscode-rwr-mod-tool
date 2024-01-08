@@ -47,10 +47,6 @@
       {
         "command": "vscode-rwr-mod-tool.formatWorkspace",
         "title": "RWR Mod Tool: Format Workspace"
-      },
-      {
-        "command": "vscode-rwr-mod-tool.formatWorkspace2",
-        "title": "RWR Mod Tool: Format Workspace2"
       }
     ],
     "snippets": [
@@ -152,6 +148,7 @@
     "typescript": "^5.1.3"
   },
   "dependencies": {
+    "@prettier/plugin-xml": "^3.2.2",
     "fast-xml-parser": "^4.2.7",
     "lodash": "^4.17.21",
     "prettier": "^3.1.1"

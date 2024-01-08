@@ -25,11 +25,12 @@ export const getAllPosition = (
 
 const prettierConfig: prettier.Options = {
     semi: false,
-    parser: "html",
     printWidth: 80,
     singleQuote: false,
     tabWidth: 4,
-    useTabs: false
+    useTabs: false,
+    parser: 'xml',
+    plugins: [require.resolve('@prettier/plugin-xml')],
 };
 
 export const checkXmlFormatted = async (text: string): Promise<boolean> => {

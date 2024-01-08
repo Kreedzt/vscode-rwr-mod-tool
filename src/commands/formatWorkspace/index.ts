@@ -5,8 +5,9 @@ import { checkXmlFormatted, formatXml } from '../../utils/file';
 import { TaskService } from '../../services/task';
 import { ThreadTask } from '../../services/threadTask';
 import { WorkerResolver } from '../../services/workerResolver';
+import { FileFormatOutputService } from '../../services/fileFormatOutput';
 
-const formatWorkspace2 = async () => {
+const formatWorkspace = async () => {
     vscode.window.withProgress({
         location: vscode.ProgressLocation.Notification,
         title: 'RWR Mod Tool: Formatting workspace...',
@@ -15,6 +16,8 @@ const formatWorkspace2 = async () => {
         TaskService.self().pause();
 
         progress.report({ increment: 0 });
+
+        console.time('formatWorkspace2');
 
         const uris = await vscode.workspace.findFiles('**/*.{xml,base,weapon,carry_item,models,call}');
 
@@ -31,6 +34,10 @@ const formatWorkspace2 = async () => {
 
         console.log('fileContents length', fileContents.length);
 
+        FileFormatOutputService.self().clear();
+
+        let errorCount = 0;
+
         await Promise.all(fileContents.map(async (fileContent, index) => {
             try {
                 console.log('Task started', index, fileContent.length);
@@ -38,8 +45,11 @@ const formatWorkspace2 = async () => {
                 console.log('Task formatted', index, formatted.length);
                 await vscode.workspace.fs.writeFile(uris[index], Buffer.from(formatted));
                 console.log('Task completed', index);
-            } catch (e) {
-                console.error('Task error', uris[index], e);
+            } catch (e: any) {
+                errorCount++;
+                FileFormatOutputService.self().appendError(`Task error: ${uris[index].path}`);
+                FileFormatOutputService.self().appendError(e.toString());
+                console.error('Task error', uris[index].path, e);
             }
 
             progressCount++;
@@ -53,16 +63,24 @@ const formatWorkspace2 = async () => {
         progress.report({ increment: 100 });
 
         TaskService.self().resume();
+
+        console.timeEnd('formatWorkspace2');
+
+        if (errorCount > 0) {
+            FileFormatOutputService.self().show();
+        }
     });
 };
 
-const formatWorkspace = async () => {
+const formatWorkspace_v1 = async () => {
     vscode.window.withProgress({
         location: vscode.ProgressLocation.Notification,
         title: 'RWR Mod Tool: Formatting workspace...',
         cancellable: false,
     }, async (progress, token) => {
         TaskService.self().pause();
+
+        console.time('formatWorkspace');
 
         progress.report({ increment: 0 });
 
@@ -146,6 +164,8 @@ const formatWorkspace = async () => {
         progress.report({ increment: 100 });
 
         TaskService.self().resume();
+
+        console.timeEnd('formatWorkspace');
     });
 };
 
@@ -153,7 +173,7 @@ export const registerFormatWorkspaceCommand = async (context: vscode.ExtensionCo
     context.subscriptions.push(
         vscode.commands.registerCommand('vscode-rwr-mod-tool.formatWorkspace', formatWorkspace)
     );
-    context.subscriptions.push(
-        vscode.commands.registerCommand('vscode-rwr-mod-tool.formatWorkspace2', formatWorkspace2)
-    );
+    // context.subscriptions.push(
+    //     vscode.commands.registerCommand('vscode-rwr-mod-tool.formatWorkspace2', formatWorkspace2)
+    // );
 };
