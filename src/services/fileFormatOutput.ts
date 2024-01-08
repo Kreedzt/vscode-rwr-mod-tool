@@ -3,10 +3,12 @@ import * as vscode from 'vscode';
 export class FileFormatOutputService {
     static inst: null | FileFormatOutputService = null;
     
-    output: vscode.OutputChannel;
+    output: vscode.LogOutputChannel;
 
     constructor() {
-        this.output = vscode.window.createOutputChannel('File Format Output');
+        this.output = vscode.window.createOutputChannel('RWR Mod Tool: File Format Output', {
+            log: true,
+        });
     }
 
     static self() {
@@ -18,11 +20,11 @@ export class FileFormatOutputService {
     }
 
     appendLine(value: string) {
-        this.output.appendLine(`[INFO] ${value}`);
+        this.output.info(value);
     }
 
     appendError(value: string) {
-        this.output.appendLine(`[ERROR] ${value}`);
+        this.output.error(value);
     }
 
     clear() {
