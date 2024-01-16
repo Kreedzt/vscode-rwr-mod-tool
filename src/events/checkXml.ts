@@ -178,8 +178,8 @@ const startXmlCheckTask = async () => {
             progress.report({
                 increment: 0,
             });
-            // clear warning
-            FileResResolver.self().clear();
+            // record error
+            FileResResolver.self().startRecoding();
 
             const [calls, factions, items, weapons] = await Promise.all([
                 vscode.workspace.findFiles('**/calls/*.{xml,call}'),
@@ -203,6 +203,8 @@ const startXmlCheckTask = async () => {
                     message: `${progressPercent.toFixed()}%`,
                 });
             }));
+
+            FileResResolver.self().stopRecoding();
 
             progress.report({
                 increment: 100,
