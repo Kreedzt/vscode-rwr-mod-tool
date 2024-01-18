@@ -178,7 +178,7 @@ const startXmlCheckTask = async () => {
             progress.report({
                 increment: 0,
             });
-            // record error
+
             FileResResolver.self().startRecoding();
 
             const [calls, factions, items, weapons] = await Promise.all([

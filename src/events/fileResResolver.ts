@@ -109,15 +109,19 @@ export class FileResResolver {
             this.diagnostics?.delete(uri);
         });
 
+        const readyToSetArray: Array<[vscode.Uri, readonly vscode.Diagnostic[]]> = []; 
+
         added.forEach((cacheStr, uri) => {
             const diagnostic = this.parseCacheKey(cacheStr);
-            this.diagnostics?.set(uri, diagnostic);
+            readyToSetArray.push([uri, diagnostic]);
         });
 
         changed?.forEach((cacheStr, uri) => {
             const diagnostic = this.parseCacheKey(cacheStr);
-            this.diagnostics?.set(uri, diagnostic);
+            readyToSetArray.push([uri, diagnostic]);
         });
+
+        this.diagnostics?.set(readyToSetArray);
     }
 
     clear() {
