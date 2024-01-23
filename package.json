@@ -31,6 +31,17 @@
     "url": "https://github.com/Kreedzt/vscode-rwr-mod-tool"
   },
   "contributes": {
+    "configuration": {
+      "id": "rwrmt", 
+      "title": "RWR Mod Tool",
+      "type": "object",
+      "properties": {
+        "rwrmt.gameFolder": {
+          "type":"string",
+          "markdownDescription": "Running with Rifles game folder `media/packages` path, must including `vanilla` folder"
+        }
+      }
+    },
     "commands": [
       {
         "command": "vscode-rwr-mod-tool.createArmor",
