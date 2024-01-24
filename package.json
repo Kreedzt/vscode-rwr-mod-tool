@@ -27,41 +27,42 @@
     "workspaceContains:**/weapons/all_weapons.xml"
   ],
   "main": "./out/extension.js",
+  "l10n": "./l10n",
   "repository": {
     "url": "https://github.com/Kreedzt/vscode-rwr-mod-tool"
   },
   "contributes": {
     "configuration": {
-      "id": "rwrmt", 
+      "id": "rwrmt",
       "title": "RWR Mod Tool",
       "type": "object",
       "properties": {
         "rwrmt.gameFolder": {
-          "type":"string",
-          "markdownDescription": "Running with Rifles game folder `media/packages` path, must including `vanilla` folder"
+          "type": "string",
+          "markdownDescription": "%rwrmt.settings.gameFolder.title%"
         }
       }
     },
     "commands": [
       {
         "command": "vscode-rwr-mod-tool.createArmor",
-        "title": "RWR Mod Tool: Create Armor"
+        "title": "%rwrmt.cmd.createArmor%"
       },
       {
         "command": "vscode-rwr-mod-tool.createWeapon",
-        "title": "RWR Mod Tool: Create Weapon"
+        "title": "%rwrmt.cmd.createWeapon%"
       },
       {
         "command": "vscode-rwr-mod-tool.formatActiveFile",
-        "title": "RWR Mod Tool: Format Active File"
+        "title": "%rwrmt.cmd.formatActiveFile%"
       },
       {
         "command": "vscode-rwr-mod-tool.formatWorkspace",
-        "title": "RWR Mod Tool: Format Workspace"
+        "title": "%rwrmt.cmd.formatWorkspace%"
       },
       {
         "command": "vscode-rwr-mod-tool.showFileFormatOutput",
-        "title": "RWR Mod Tool: Show File Format Output"
+        "title": "%rwrmt.cmd.showFileFormatOutput%"
       }
     ],
     "snippets": [
@@ -105,33 +106,33 @@
     "walkthroughs": [
       {
         "id": "tutorial",
-        "title": "Get started with RWR Mod Tool",
-        "description": "Learn how to use RWR Mod Tool",
+        "title": "%rwrmt.tutorial.title%",
+        "description": "%rwrmt.tutorial.description%",
         "steps": [
           {
             "id": "run-command",
-            "title": "Run a command",
-            "description": "Run a command from the command palette",
+            "title": "%rwrmt.runcmd.title%",
+            "description": "%rwrmt.runcmd.description%",
             "media": {
               "image": "./media/commands.png",
-              "altText": "Command palette"
+              "altText": "%rwrmt.runcmd.alt%"
             }
           },
           {
             "id": "file-ref-check",
-            "title": "Check file references",
-            "description": "Auto check file references",
+            "title": "%rwrmt.checkFileRef.title%",
+            "description": "%rwrmt.checkFileRef.description%",
             "media": {
               "image": "./media/file-ref-check.png",
-              "altText": "File reference check"
+              "altText": "%rwrmt.checkFileRef.alt%"
             }
           },
           {
             "id": "snippets",
-            "title": "All snippets are prefixed with rwr-",
+            "title": "%rwrmt.snippets.title%",
             "media": {
               "image": "./media/snippets.png",
-              "altText": "Snippets"
+              "altText": "%rwrmt.snippets.alt%"
             }
           }
         ]
@@ -156,6 +157,7 @@
     "@types/vscode": "^1.80.0",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "^5.59.8",
+    "@vscode/l10n-dev": "^0.0.31",
     "@vscode/test-electron": "^2.3.2",
     "eslint": "^8.41.0",
     "glob": "^8.1.0",
@@ -164,6 +166,7 @@
   },
   "dependencies": {
     "@prettier/plugin-xml": "^3.2.2",
+    "@vscode/l10n": "^0.0.18",
     "fast-xml-parser": "^4.2.7",
     "lodash": "^4.17.21",
     "prettier": "^3.1.1"

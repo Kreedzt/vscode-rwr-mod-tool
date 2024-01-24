@@ -1,0 +1,18 @@
+{
+    "rwrmt.tutorial.title": "Get started with RWR Mod Tool",
+    "rwrmt.tutorial.description": "Learn how to use RWR Mod Tool",
+    "rwrmt.runcmd.title": "Run a command",
+    "rwrmt.runcmd.description": "Run a command from the command palette",
+    "rwrmt.runcmd.alt": "Command palette",
+    "rwrmt.checkFileRef.title": "Check file references",
+    "rwrmt.checkFileRef.description": "Auto check file references",
+    "rwrmt.checkFileRef.alt": "File references check",
+    "rwrmt.snippets.title": "All snippets are prefixed with rwr-",
+    "rwrmt.snippets.alt": "Snippets",
+    "rwrmt.cmd.createArmor": "RWR Mod Tool: Create Armor",
+    "rwrmt.cmd.createWeapon": "RWR Mod Tool: Create Weapon",
+    "rwrmt.cmd.formatActiveFile": "RWR Mod Tool: Format Active File",
+    "rwrmt.cmd.formatWorkspace": "RWR Mod Tool: Format Workspace",
+    "rwrmt.cmd.showFileFormatOutput": "RWR Mod Tool: Show File Format Output",
+    "rwrmt.settings.gameFolder.title": "Running with Rifles game folder `media/packages` path, must including `vanilla` folder"
+}

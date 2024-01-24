@@ -1,0 +1,18 @@
+{
+    "rwrmt.tutorial.title": "快速入门 RWR Mod Tool",
+    "rwrmt.tutorial.description": "了解如何使用 RWR Mod Tool",
+    "rwrmt.runcmd.title": "运行命令",
+    "rwrmt.runcmd.description": "从命令面板运行命令",
+    "rwrmt.runcmd.alt": "命令面板",
+    "rwrmt.checkFileRef.title": "检查文件引用",
+    "rwrmt.checkFileRef.description": "自动检查文件引用",
+    "rwrmt.checkFileRef.alt": "文件引用检查",
+    "rwrmt.snippets.title": "所有代码片段以 rwr- 作为前缀",
+    "rwrmt.snippets.alt": "代码片段",
+    "rwrmt.cmd.createArmor": "RWR Mod Tool: 创建护甲",
+    "rwrmt.cmd.createWeapon": "RWR Mod Tool: 创建武器",
+    "rwrmt.cmd.formatActiveFile": "RWR Mod Tool: 格式化当前文件",
+    "rwrmt.cmd.formatWorkspace": "RWR Mod Tool: 格式化工作区所有文件",
+    "rwrmt.cmd.showFileFormatOutput": "RWR Mod Tool: 显示文件格式化输出结果面板",
+    "rwrmt.settings.gameFolder.title": "Running with Rifles 游戏目录下 `media/packages` 路径, 必须包含 `vanilla` 目录"
+}
