@@ -115,14 +115,6 @@
         "description": "%rwrmt.tutorial.description%",
         "steps": [
           {
-            "id": "set-game-folder",
-            "title": "%rwrmt.setGameFolder.title%",
-            "description": "%rwrmt.setGameFolder.description%",
-            "completionEvents": [
-              "onSettingChanged:rwrmt.gameFolder"
-            ]
-          },
-          {
             "id": "run-command",
             "title": "%rwrmt.runcmd.title%",
             "description": "%rwrmt.runcmd.description%",

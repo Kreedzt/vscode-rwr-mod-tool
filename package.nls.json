@@ -7,7 +7,7 @@
     "rwrmt.runcmd.description": "Run a command from the command palette",
     "rwrmt.runcmd.alt": "Command palette",
     "rwrmt.checkFileRef.title": "Check file references",
-    "rwrmt.checkFileRef.description": "Auto check file references",
+    "rwrmt.checkFileRef.description": "Auto check file references.\nTo improve the file reference detection experience, you need to set the game directory\n[Set game folder](command:vscode-rwr-mod-tool.openConfig)",
     "rwrmt.checkFileRef.alt": "File references check",
     "rwrmt.snippets.title": "All snippets are prefixed with rwr-",
     "rwrmt.snippets.alt": "Snippets",
