@@ -1,6 +1,8 @@
 {
     "rwrmt.tutorial.title": "Get started with RWR Mod Tool",
     "rwrmt.tutorial.description": "Learn how to use RWR Mod Tool",
+    "rwrmt.setGameFolder.title": "Set Running with Rifles game folder",
+    "rwrmt.setGameFolder.description": "To improve the file reference detection experience, you need to set the game directory\n[Set game folder](command:vscode-rwr-mod-tool.changeSetting)",
     "rwrmt.runcmd.title": "Run a command",
     "rwrmt.runcmd.description": "Run a command from the command palette",
     "rwrmt.runcmd.alt": "Command palette",

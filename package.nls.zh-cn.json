@@ -1,6 +1,8 @@
 {
     "rwrmt.tutorial.title": "快速入门 RWR Mod Tool",
     "rwrmt.tutorial.description": "了解如何使用 RWR Mod Tool",
+    "rwrmt.setGameFolder.title": "设置 Running with Rifles 游戏目录\n[设置游戏目录](command:vscode-rwr-mod-tool.changeSetting)",
+    "rwrmt.setGameFolder.description": "为了提高文件引用检测的体验, 你需要设置游戏目录",
     "rwrmt.runcmd.title": "运行命令",
     "rwrmt.runcmd.description": "从命令面板运行命令",
     "rwrmt.runcmd.alt": "命令面板",
