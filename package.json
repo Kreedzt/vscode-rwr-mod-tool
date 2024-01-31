@@ -130,7 +130,8 @@
             "media": {
               "image": "./media/file-ref-check.png",
               "altText": "%rwrmt.checkFileRef.alt%"
-            }
+            },
+            "completionEvents": ["onCommand:vscode-rwr-mod-tool.openConfig", "onSettingChanged:rwrmt.gameFolder"]
           },
           {
             "id": "snippets",
