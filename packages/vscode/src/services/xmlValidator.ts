@@ -139,7 +139,6 @@ export class XmlValidator implements IValidator {
             });
 
         if (!checkRes.result) {
-            FileResResolver.self().removeMissingFileWarn(fileUri);
             FileResResolver.self().addMissingFileWarn(fileUri, rangeList);
         }
 

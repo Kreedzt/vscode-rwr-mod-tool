@@ -14,7 +14,9 @@ export class FileResResolver {
     }
 
     init() {
-        this.diagnostics = vscode.languages.createDiagnosticCollection('RWR Mod Tool: XML Validator');
+        this.diagnostics = vscode.languages.createDiagnosticCollection(
+            'RWR Mod Tool: XML Validator',
+        );
     }
 
     clear() {
