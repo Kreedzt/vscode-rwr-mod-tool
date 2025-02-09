@@ -14,7 +14,7 @@ export class FileResResolver {
     }
 
     init() {
-        this.diagnostics = vscode.languages.createDiagnosticCollection();
+        this.diagnostics = vscode.languages.createDiagnosticCollection('RWR Mod Tool: XML Validator');
     }
 
     clear() {
@@ -42,6 +42,10 @@ export class FileResResolver {
         });
 
         return rangeList.filter((_r, i) => !dunplicateIndex.has(i));
+    }
+
+    removeMissingFileWarn(uri: vscode.Uri) {
+        this.diagnostics?.delete(uri);
     }
 
     addMissingFileWarn(

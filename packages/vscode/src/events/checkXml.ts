@@ -161,56 +161,59 @@ export const scanFile = async (e: vscode.Uri) => {
     }
 };
 
-const startXmlCheckTask = async () => {
+export const startXmlCheckTask = async () => {
     console.log('startXmlCheck');
 
     if (!TaskService.self().getReady()) {
         return;
     }
 
-    vscode.window.withProgress(
-        {
-            location: vscode.ProgressLocation.Window,
-            cancellable: false,
-            title: 'RWR Mod Tool: Scanning file...',
-        },
-        async (progress) => {
-            progress.report({
-                increment: 0,
-            });
-            // clear warning
-            FileResResolver.self().clear();
-
-            const [calls, factions, items, weapons] = await Promise.all([
-                vscode.workspace.findFiles('**/calls/*.{xml,call}'),
-                vscode.workspace.findFiles('**/factions/*.{models,xml}'),
-                vscode.workspace.findFiles('**/items/*.{carry_item,base}'),
-                vscode.workspace.findFiles('**/weapons/*.{weapon,xml}'),
-            ]);
-
-            const allUri = [...calls, ...factions, ...items, ...weapons];
-            console.log('allUrl', allUri);
-
-            let processed = 0;
-
-            await Promise.all(allUri.map(async (f) => {
-                await scanFile(f);
-
-                ++processed;
-                const progressPercent = (processed / allUri.length) * 100;
+    return new Promise<void>((resolve) => {
+        vscode.window.withProgress(
+            {
+                location: vscode.ProgressLocation.Window,
+                cancellable: false,
+                title: 'RWR Mod Tool: Scanning file...',
+            },
+            async (progress) => {
                 progress.report({
-                    increment: (1 / allUri.length) * 100,
-                    message: `${progressPercent.toFixed()}%`,
+                    increment: 0,
                 });
-            }));
+                // clear warning
+                FileResResolver.self().clear();
 
-            progress.report({
-                increment: 100,
-            });
-        },
-    );
-};
+                const [calls, factions, items, weapons] = await Promise.all([
+                    vscode.workspace.findFiles('**/calls/*.{xml,call}'),
+                    vscode.workspace.findFiles('**/factions/*.{models,xml}'),
+                    vscode.workspace.findFiles('**/items/*.{carry_item,base}'),
+                    vscode.workspace.findFiles('**/weapons/*.{weapon,xml}'),
+                ]);
 
-export const startXmlCheck = () => {
-    _.debounce(startXmlCheckTask, 1000)();
+                const allUri = [...calls, ...factions, ...items, ...weapons];
+                console.log('allUrl', allUri);
+
+                let processed = 0;
+
+                await Promise.all(
+                    allUri.map(async (f) => {
+                        await scanFile(f);
+
+                        ++processed;
+                        const progressPercent =
+                            (processed / allUri.length) * 100;
+                        progress.report({
+                            increment: (1 / allUri.length) * 100,
+                            message: `${progressPercent.toFixed()}%`,
+                        });
+                    }),
+                );
+
+                resolve();
+
+                progress.report({
+                    increment: 100,
+                });
+            },
+        );
+    });
 };
