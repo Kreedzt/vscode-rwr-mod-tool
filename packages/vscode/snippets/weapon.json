@@ -1,0 +1,171 @@
+{
+    "weapon.register": {
+        "prefix": "rwr-weapon",
+        "description": "rwr weapon register",
+        "body": [
+            "<weapon file=\"$1\" key=\"$2\" />",
+            "$3"
+        ]
+    },
+    "weapon.refdefine": {
+        "prefix": "rwr-weapon-ref-define",
+        "description": "rwr weapon ref define",
+        "body": [
+            "<weapon",
+            "\tfile=\"$1\"",
+            "\tdrop_count_factor_on_player_death=\"$2\"",
+            "\ttime_to_live_out_in_the_open=\"$3\"",
+            "\tplayer_death_drop_owner_lock_time=\"$4\"",
+            "\tkey=\"$5\"",
+            "\ton_ground_up=\"${6|0 0 1|}\"",
+            "\tradius=\"$7\"",
+            ">",
+            "$8",
+            "</weapon>",
+            "$9"
+        ]
+    },
+    "weapon.define": {
+        "prefix": "rwr-weapon-define",
+        "description": "rwr weapon define",
+        "body": [
+            "<weapon",
+            "\tdrop_count_factor_on_death=\"${1|0|}\"",
+            "\tdrop_count_factor_on_player_death=\"${2|1.0|}\"",
+            "\ttime_to_live_out_in_the_open=\"$3\"",
+            "\tplayer_death_drop_owner_lock_time=\"$4\"",
+            "\tkey=\"$5\"",
+            "\ton_ground_up=\"${6|0 0 1|}\"",
+            ">",
+            "$7",
+            "</weapon>",
+            "$8"
+        ]
+    },
+    "weapon.specification": {
+        "prefix": "rwr-specification",
+        "description": "rwr weapon specification",
+        "body": [
+            "<specification",
+            "\tretrigger_time=\"$1\"",
+            "\taccuracy_factor=\"$2\"",
+            "\tsustained_fire_grow_step=\"$3\"",
+            "\tsustained_fire_diminish_rate=\"$4\"",
+            "\tmagazine_size=\"$5\"",
+            "\tcan_shoot_standing=\"$6\"",
+            "\tcarry_in_two_hands=\"$7\"",
+            "\tsuppressed=\"$8\"",
+            "\tname=\"$9\"",
+            "\tclass=\"${10|0|}\"",
+            "\treload_one_at_a_time=\"${11|0|}\"",
+            "\tsight_range_modifier=\"${12|1.0|}\"",
+            "\tprojectile_speed=\"$13\"",
+            "\tprojectiles_per_shot=\"$14\"",
+            "\tbarrel_offset=\"$15\"",
+            "\tburst_shots=\"$16\"",
+            "\tstab_enabled=\"$17\"",
+            "\tuse_basic_muzzle_smoke_effect=\"${18|0|}\"",
+            "\tslot=\"${19|0|}\"",
+            ">",
+            "$20",
+            "</specification>",
+            "$21"
+        ]
+    },
+    "weapon.animation": {
+        "prefix": "rwr-animation",
+        "description": "rwr weapon animation",
+        "body": [
+            "<animation state_key=\"$1\" animation_key=\"$2\"/>",
+            "$3"
+        ]
+    },
+    "weapon.sound": {
+        "prefix": "rwr-sound",
+        "description": "rwr weapon sound",
+        "body": [
+            "<sound key=\"$1\" fileref=\"$2\" volume=\"$3\" pitch_variety=\"$4\" />",
+            "$5"
+        ]
+    },
+    "weapon.model": {
+        "prefix": "rwr-model",
+        "description": "rwr weapon model",
+        "body": [
+            "<model filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "weapon.projectile": {
+        "prefix": "rwr-projectile",
+        "description": "rwr weapon projectile",
+        "body": [
+            "<projectile",
+            "\tfile=\"$1\"",
+            "\tpulldown_in_air=\"$2\"",
+            "\tcan_be_detected_by_footmen=\"${3|1|}\"",
+            "\ttime_to_live=\"$4\"",
+            "\tcan_be_detected_by_driver=\"${5|1|}\"",
+            "\tcan_be_disarmed=\"$6\"",
+            "\tname=\"$7\"",
+            ">",
+            "$8",
+            "</projectile>",
+            "$9"
+        ]
+    },
+    "weapon.result": {
+        "prefix": "rwr-result",
+        "description": "rwr weapon result",
+        "body": [
+            "<result",
+            "\tclass=\"$1\"",
+            "\tkill_probability=\"$2\"",
+            "\tkill_probability_offset_on_successful_hit=\"$3\"",
+            "\tkill_decay_start_time=\"$4\"",
+            "\tkill_decay_end_time=\"$5\"",
+            "\tcharacter_state=\"$6\" />",
+            "$7"
+        ]
+    },
+    "weapon.trigger": {
+        "prefix": "rwr-trigger",
+        "description": "rwr weapon trigger",
+        "body": [
+            "<trigger class=\"$1\" time_to_live=\"$2\" />",
+            "$3"
+        ]
+    },
+    "weapon.rotation": {
+        "prefix": "rwr-rotation",
+        "description": "rwr weapon rotation",
+        "body": [
+            "<rotation class=\"$1\" />",
+            "$2"
+        ]
+    },
+    "weapon.effect": {
+        "prefix": "rwr-effect",
+        "description": "rwr weapon effect",
+        "body": [
+            "<effect class=\"$1\" key=\"$2\" ref=\"$3\" lighting=\"${4|0|}\" />",
+            "$5"
+        ]
+    },
+    "weapon.trail": {
+        "prefix": "rwr-trail",
+        "description": "rwr weapon trail",
+        "body": [
+            "<trail probability=\"${1|1|}\" key=\"$2\" />",
+            "$3"
+        ]
+    },
+    "weapon.modifier": {
+        "prefix": "rwr-modifier",
+        "description": "rwr weapon modifier",
+        "body": [
+            "<modifier class=\"$1\" value=\"$2\" />",
+            "$3"
+        ]
+    }
+}

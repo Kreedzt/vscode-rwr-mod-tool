@@ -1,0 +1,84 @@
+{
+    "model.define": {
+        "prefix": "rwr-model-define",
+        "description": "rwr model define",
+        "body": [
+            "<model>",
+            "$1",
+            "</model>",
+            "$2"
+        ]
+    },
+    "model.voxels": {
+        "prefix": "rwr-model-voxels",
+        "description": "rwr model voxels",
+        "body": [
+            "<voxels>",
+            "$1",
+            "</voxels>",
+            "$2"
+        ]
+    },
+    "model.voxel": {
+        "prefix": "rwr-model-voxel",
+        "description": "rwr model voxel",
+        "body": [
+            "<voxel x=\"$1\" y=\"$2\" z=\"$3\" r=\"$4\" g=\"$5\" b=\"$6\" a=\"$7\"/>",
+            "$8"
+        ]
+    },
+    "model.skeleton": {
+        "prefix": "rwr-model-skeleton",
+        "description": "rwr model skeleton",
+        "body": [
+            "<skeleton>",
+            "$1",
+            "</skeleton>",
+            "$2"
+        ]
+    },
+    "model.particle": {
+        "prefix": "rwr-model-particle",
+        "description": "rwr model particle",
+        "body": [
+            "<particle bodyAreaHint=\"$1\" id=\"$2\" invMass=\"$3\" name=\"$4\" x=\"$5\" y=\"$6\" z=\"$7\"/>",
+            "$8"
+        ]
+    },
+    "model.stick": {
+        "prefix": "rwr-model-stick",
+        "description": "rwr model stick",
+        "body": [
+            "<stick a=\"$1\" b=\"$2\" />",
+            "$3"
+        ]
+    },
+    "model.skeletonVoxelBindings": {
+        "prefix": "rwr-model-skeleton-voxel-bindings",
+        "description": "rwr model skeleton voxel bindings",
+        "body": [
+            "<skeletonVoxelBindings>",
+            "$1",
+            "</skeletonVoxelBindings>",
+            "$2"
+        ]
+    },
+    "model.group": {
+        "prefix": "rwr-model-group",
+        "description": "rwr model group",
+        "body": [
+            "<group constraintIndex=\"$1\">",
+            "$2",
+            "</group>",
+            "$3"
+        ]
+    },
+    "model.voxel.index": {
+        "prefix": "rwr-model-voxel-index",
+        "description": "rwr model voxel index",
+        "body": [
+            "<voxel index=\"$1\" />",
+            "$2"
+        ]
+    }
+}

@@ -1,0 +1,85 @@
+{
+    "misc.inventory": {
+        "prefix": "rwr-inventory",
+        "description": "rwr inventory",
+        "body": [
+            "<inventory encumbrance=\"$1\" price=\"$2\" />",
+            "$3"
+        ]
+    },
+    "misc.capacity": {
+        "prefix": "rwr-capacity",
+        "description": "rwr capacity",
+        "body": [
+            "<capacity value=\"${1|0,1|}\" source=\"${2|rank|}\" source_value=\"${3|0.0|}\" />",
+            "$4"
+        ]
+    },
+    "misc.effect": {
+        "prefix": "rwr-effect-ref",
+        "description": "rwr effect ref",
+        "body": [
+            "<effect class=\"$1\" ref=\"$2\" />",
+            "$3"
+        ]
+    },
+    "misc.effect.define": {
+        "prefix": "rwr-effect-define",
+        "description": "rwr effect define",
+        "body": [
+            "<effect",
+            "\tclass=\"$1\"",
+            "\type=\"$2\"",
+            "\tsize=\"$3\"",
+            "\tatlas_index=\"$4\"",
+            "\tlayer=\"$5\"",
+            "\tadditive=\"$6\"",
+            "\tapply_gore_factor=\"$7\"",
+            "/>",
+            "$3"
+        ]
+    },
+    "misc.hud_icon": {
+        "prefix": "rwr-hud-icon",
+        "description": "rwr hud icon",
+        "body": [
+            "<hud_icon filename=\"$1\" />",
+            "$2"
+        ]
+    },
+    "misc.drop_on_death_result": {
+        "prefix": "rwr-drop-on-death-result",
+        "description": "rwr drop_on_death_result",
+        "body": [
+            "<drop_on_death_result",
+            "\tclass=\"${1|spawn|}\"",
+            "\tinstance_class=\"${2|projectile|}\"",
+            "\tinstance_key=\"$3\"",
+            "\tmin_amount=\"${4|1|}\"",
+            "\tmax_amount=\"${5|1|}\"",
+            "\toffset=\"${6|0 0 0|}\"",
+            "\tposition_spread=\"${7|0 0|}\"",
+            "\tdirection_spread=\"${8|0 0|}\"",
+            ">",
+            "$9",
+            "</drop_on_death_result>",
+            "$10"
+        ]
+    },
+    "misc.tag": {
+        "prefix": "rwr-tag",
+        "description": "rwr tag",
+        "body": [
+            "<tag name=\"$1\" />",
+            "$2"
+        ]
+    },
+    "misc.modifier": {
+        "prefix": "rwr-modifier",
+        "description": "rwr modifier",
+        "body": [
+            "<modifier class=\"$1\" value=\"$2\" />",
+            "$3"
+        ]
+    }
+}
