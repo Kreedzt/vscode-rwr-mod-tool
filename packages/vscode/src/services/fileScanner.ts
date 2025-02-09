@@ -2,9 +2,7 @@ import {
     Subject,
     Subscription,
     debounceTime,
-    distinctUntilChanged,
     from,
-    skipUntil,
     switchMap,
     tap,
 } from 'rxjs';
@@ -17,15 +15,14 @@ export class FileScanner {
     filePath2ContentMap = new Map<string, string>();
     subscription = new Subscription();
     fileChangeSubject = new Subject<string>();
-    skipUntilSubject = new Subject<void>();
     validatorList: IValidator[] = [];
+    validateSubject = new Subject<string>();
 
     constructor() {
         this.subscription.add(
             this.fileChangeSubject
                 .pipe(
                     debounceTime(250),
-                    skipUntil(this.skipUntilSubject),
                     tap((path) => this.logFileChange('file change path', path)),
                     switchMap((path) => {
                         return from(this.scanFile(path));
@@ -46,13 +43,11 @@ export class FileScanner {
 
     async validate(fileContent: string, fileUri: Uri) {
         console.log('validating file', fileUri.path);
-        return await Promise.all(
+        await Promise.all(
             this.validatorList.map((v) => v.validate(fileContent, fileUri)),
         );
-    }
-
-    startScan() {
-        this.skipUntilSubject.next();
+        this.validateSubject.next(fileUri.path);
+        return fileUri.path;
     }
 
     async scanFile(path: string) {
@@ -70,6 +65,7 @@ export class FileScanner {
         const fileUri = this.filePath2UriMap.get(path);
         return { fileContent, fileUri };
     }
+
     public async addScanFile(uri: Uri, content?: string) {
         let realContent = content;
         if (!realContent) {
@@ -77,13 +73,22 @@ export class FileScanner {
         }
         this.filePath2UriMap.set(uri.path, uri);
 
+        console.log('addScanFile', uri.path);
         const lastContent = this.filePath2ContentMap.get(uri.path);
+        console.log('lastContent diff', lastContent === realContent);
         if (lastContent === realContent) {
             return;
         }
         this.filePath2ContentMap.set(uri.path, realContent);
 
         this.fileChangeSubject.next(uri.path);
+    }
+
+    async directValidateFile(uri: Uri) {
+        const realContent = await this.readFileContent(uri);
+        this.filePath2UriMap.set(uri.path, uri);
+        this.filePath2ContentMap.set(uri.path, realContent);
+        await this.validate(realContent, uri);
     }
 
     async readFileContent(uri: Uri): Promise<string> {
