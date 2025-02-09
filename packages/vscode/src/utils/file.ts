@@ -6,19 +6,22 @@ interface IPositionItem {
 
 export const getAllPosition = (
     text: string,
-    target: string,
+  target: string,
 ): IPositionItem[] => {
-    const regex = new RegExp(target, 'g');
+  // Escape special regex characters in target
+  const escapedTarget = target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(escapedTarget, 'g');
 
-    let match;
-    const positions: IPositionItem[] = [];
+  let match;
+  const positions: IPositionItem[] = [];
 
-    while ((match = regex.exec(text)) !== null) {
-        positions.push({
-            line: text.slice(0, match.index).split('\n').length - 1,
-            character: match.index - text.lastIndexOf('\n', match.index) - 1,
-        });
-    }
+  while ((match = regex.exec(text)) !== null) {
+    const lines = text.substring(0, match.index).split('\n');
+    positions.push({
+      line: lines.length - 1,
+      character: lines[lines.length - 1].length,
+    });
+  }
 
     return positions;
 };
