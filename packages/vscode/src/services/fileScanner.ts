@@ -70,13 +70,30 @@ export class FileScanner {
     }
 
     public async directValidateFile(uri: Uri) {
-        const content = await this.readFileContent(uri);
-        return this.validateFile({ uri, content }).toPromise();
+        try {
+            if (!uri || !uri.fsPath) {
+                console.error('Invalid URI provided to directValidateFile:', uri);
+                return;
+            }
+            const content = await this.readFileContent(uri);
+            return this.validateFile({ uri, content }).toPromise();
+        } catch (error) {
+            console.error(`Error in directValidateFile for ${uri?.fsPath}:`, error);
+            throw error;
+        }
     }
 
     private async readFileContent(uri: Uri): Promise<string> {
-        const fsContent = await vscode.workspace.fs.readFile(uri);
-        return Buffer.from(fsContent).toString();
+        if (!uri || !uri.fsPath) {
+            throw new Error('Invalid URI provided to readFileContent');
+        }
+        try {
+            const fsContent = await vscode.workspace.fs.readFile(uri);
+            return Buffer.from(fsContent).toString();
+        } catch (error) {
+            console.error(`Error reading file ${uri.fsPath}:`, error);
+            throw error;
+        }
     }
 
     destroy() {

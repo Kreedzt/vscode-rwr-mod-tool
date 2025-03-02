@@ -1,5 +1,4 @@
 import { XMLParser } from 'fast-xml-parser';
-import * as vscode from 'vscode';
 
 const xmlParser: {
     parser: XMLParser | null;

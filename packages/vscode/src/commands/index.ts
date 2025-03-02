@@ -6,9 +6,10 @@ import { registerFormatWorkspaceCommand } from './formatWorkspace';
 import { registerShowFileFormatOutputCommand } from './showFileFormatOutput';
 
 export function registerCommandList(context: vscode.ExtensionContext) {
+    console.log('registerCommandList');
     registerWeaponCommand(context);
     registerArmorCommand(context);
-    registerFormatActiveFileCommand(context);;
+    registerFormatActiveFileCommand(context);
     registerFormatWorkspaceCommand(context);
     registerShowFileFormatOutputCommand(context);
 }

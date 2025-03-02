@@ -9,27 +9,48 @@ export const registerEventList = async (context: vscode.ExtensionContext) => {
 
     scanner = new FileScanner().addValidator(new XmlValidator());
 
-    // Scan all XML files in workspace
-    const allUri = await vscode.workspace.findFiles(
-        '**/{calls/*.xml,calls/*.call,factions/*.models,factions/*.xml,items/*.carry_item,items/*.base,weapons/*.weapon,weapons/*.xml}',
-    );
-
-    await vscode.window.withProgress(
+    vscode.window.withProgress(
         {
             location: vscode.ProgressLocation.Window,
             cancellable: false,
             title: 'RWR Mod Tool: Scanning files...',
         },
         async (progress) => {
+            // Scan all XML files in workspace
+            const allUri = await vscode.workspace.findFiles(
+                '**/{calls/*.xml,calls/*.call,factions/*.models,factions/*.xml,items/*.carry_item,items/*.base,weapons/*.weapon,weapons/*.xml}',
+            );
+
             const totalFiles = allUri.length;
+
+            if (totalFiles === 0) {
+                progress.report({
+                    increment: 100,
+                    message: 'No XML files found to scan',
+                });
+                return;
+            }
+
             let processed = 0;
             const increment = 100 / totalFiles;
 
             await Promise.all(
                 allUri.map(async (uri) => {
-                    await scanner?.directValidateFile(uri);
-                    processed += increment;
-                    progress.report({ increment: increment, message: `${processed.toFixed(2)}%` });
+                    try {
+                        await scanner?.directValidateFile(uri);
+                        processed += increment;
+                        progress.report({
+                            increment: increment,
+                            message: `${processed.toFixed(2)}%`,
+                        });
+                    } catch (error) {
+                        processed += increment;
+                        console.error(
+                            `Error validating file ${uri.fsPath}:`,
+                            error,
+                        );
+                        // Continue with other files even if one fails
+                    }
                 }),
             );
         },

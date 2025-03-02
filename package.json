@@ -7,12 +7,10 @@
       "url": "https://github.com/Kreedzt/vscode-rwr-mod-tool"
     },
     "scripts": {
-      "package": "pnpm run --filter vscode-rwr-mod-tool package",
-      "publish": "pnpm run --filter vscode-rwr-mod-tool publish",
-      "compile": "pnpm run --filter vscode-rwr-mod-tool compile",
-      "pretest": "pnpm run compile && pnpm run lint",
-      "format": "prettier --write \"**/*.ts\"",
-      "test": "pnpm run --filter vscode-rwr-mod-tool test"
+      "build": "cd ./packages/vscode && npm run build",
+      "watch": "cd ./packages/vscode && npm run watch",
+      "pack": "cd ./packages/vscode && npm run pack",
+      "release": "cd ./packages/vscode && npm run release"
     },
     "devDependencies": {
       "@types/glob": "^8.1.0",
