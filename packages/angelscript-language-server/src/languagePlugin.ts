@@ -21,10 +21,6 @@ export class AngelScriptVirtualCode implements VirtualCode {
     id = 'root';
     languageId = 'angelscript';
     mappings: CodeMapping[];
-    // embeddedCodes: VirtualCode[] = [];
-
-    // Reuse in custom language service plugin
-    // htmlDocument: html.HTMLDocument;
 
     constructor(public snapshot: ts.IScriptSnapshot) {
         this.mappings = [
@@ -42,13 +38,5 @@ export class AngelScriptVirtualCode implements VirtualCode {
                 },
             },
         ];
-        // this.htmlDocument = htmlLs.parseHTMLDocument(
-        //     html.TextDocument.create(
-        //         '',
-        //         'html',
-        //         0,
-        //         snapshot.getText(0, snapshot.getLength()),
-        //     ),
-        // );
     }
 }
