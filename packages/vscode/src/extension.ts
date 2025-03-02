@@ -3,18 +3,19 @@
 import * as vscode from 'vscode';
 import { registerCommandList } from './commands';
 import { disposeEventList, registerEventList } from './events';
-import { registerLSP } from './lsp';
+import { registerLSP, disposeLSP } from './lsp';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
     console.log('Congratulations, your extension "vscode" is now active!');
     registerCommandList(context);
     registerEventList(context);
-    registerLSP(context);
+    await registerLSP(context);
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {
+export async function deactivate() {
     disposeEventList();
+    await disposeLSP();
 }

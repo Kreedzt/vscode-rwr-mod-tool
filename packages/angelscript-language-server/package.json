@@ -8,11 +8,12 @@
 		"out/**/*.d.ts"
 	],
 	"bin": {
-		"html1-language-server": "./bin/angelscript-language-server.js"
+		"angelscript-language-server": "./bin/angelscript-language-server.js"
 	},
 	"dependencies": {
 		"@volar/language-core": "~2.4.0",
 		"@volar/language-server": "~2.4.0",
+		"@volar/language-service": "^2.4.11",
 		"@volar/typescript": "~2.4.0",
 		"volar-service-css": "volar-2.4",
 		"volar-service-emmet": "volar-2.4",

@@ -140,9 +140,9 @@
   },
   "scripts": {
     "build": "node scripts/build -- --minify",
-		"watch": "npm run build -- --watch",
-		"pack": "npm run build && vsce package --no-dependencies",
-		"release": "npm run build && vsce publish --no-dependencies",
+    "watch": "npm run build -- --watch",
+    "pack": "npm run build && vsce package --no-dependencies",
+    "release": "npm run build && vsce publish --no-dependencies",
     "pretest": "pnpm run compile && pnpm run lint",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "eslint src --ext ts",
@@ -171,6 +171,7 @@
     "fast-xml-parser": "^4.2.7",
     "lodash": "^4.17.21",
     "prettier": "^3.1.1",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "vscode-languageclient": "^9.0.1"
   }
 }
