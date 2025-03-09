@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.6.0
+
+-   add file resolver language server
+    -   add xml file attributes("file", "file_name", "filename", "fileref") jump
+
 ## 0.5.0
 
 -   add angelscript language server

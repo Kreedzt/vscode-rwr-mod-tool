@@ -30,6 +30,12 @@ Registered snippets:
 
 -   support `#include "xxx.as"` file jump
 
+### File resolver Language Server
+
+### Go to Definition
+
+-   support xml file attributes("file", "file_name", "filename", "fileref") jump
+
 ## Release Notes
 
 ## 0.5.0
