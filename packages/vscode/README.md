@@ -18,7 +18,7 @@ Registered commands:
 
 Registered linters:
 
--   xml property file / fileRef url check("file", "file_name", "ilename", "ileref")
+-   xml property file / fileRef url check("file", "file_name", "filename", "fileref")
 
 Registered snippets:
 

@@ -46,7 +46,6 @@ export const service: LanguageServicePlugin = {
     },
     create(context): LanguageServicePluginInstance {
         console.log('angelscript-service created!');
-        // Get workspace folders from context and convert to file paths
         const workspaceFolders = (context.env?.workspaceFolders || []).map(
             (folder) =>
                 typeof folder === 'string'
@@ -54,14 +53,8 @@ export const service: LanguageServicePlugin = {
                     : folder.fsPath,
         );
         return {
-            // provideHover(document, position, token) {
-            //     // Implement hover support here
-            // },
             provideDefinition(document, position, token) {
                 const line = position.line;
-
-                // 获取整行
-                const res = document.offsetAt(position);
                 const wholeLine = document.getText().split('\n')[line];
 
                 // 匹配 #include "" 语法
@@ -78,15 +71,19 @@ export const service: LanguageServicePlugin = {
                         // 创建目标文件的URI
                         const targetUri = URI.file(matchedFilePath).toString();
 
-                        // 创建位置为第一行第一列的Range (0,0)
-                        const targetPosition = {
-                            line: 0,
-                            character: 0,
-                        };
+                        // 获取完整文件名（包含后缀）
+                        const fileName = path.basename(matchedFilePath);
 
+                        // 创建包含完整文件名长度的Range
                         const targetRange = {
-                            start: targetPosition,
-                            end: targetPosition,
+                            start: {
+                                line: 0,
+                                character: 0,
+                            },
+                            end: {
+                                line: 0,
+                                character: fileName.length,
+                            },
                         };
 
                         return [
@@ -103,7 +100,6 @@ export const service: LanguageServicePlugin = {
 
                 return [];
             },
-            // TODO
         };
     },
 };

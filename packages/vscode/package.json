@@ -40,6 +40,17 @@
         "extensions": [
           ".as"
         ]
+      },
+      {
+        "id": "xml",
+        "extensions": [
+          ".xml",
+          ".base",
+          ".weapon",
+          ".carry_item",
+          ".models",
+          ".call"
+        ]
       }
     ],
     "commands": [
@@ -150,6 +161,7 @@
   },
   "devDependencies": {
     "@angelscript/language-server": "workspace:*",
+    "@file-resolver/language-server": "workspace:*",
     "@types/glob": "^8.1.0",
     "@types/lodash": "^4.14.202",
     "@types/mocha": "^10.0.1",

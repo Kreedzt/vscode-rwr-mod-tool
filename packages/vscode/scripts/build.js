@@ -3,6 +3,7 @@ require('esbuild')
         entryPoints: {
             client: './src/extension.ts',
             server: '../angelscript-language-server/src/index.ts',
+            resolver: "../file-resolver-language-server/src/index.ts",
         },
         sourcemap: true,
         bundle: true,
